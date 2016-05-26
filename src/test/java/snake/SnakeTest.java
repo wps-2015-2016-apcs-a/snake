@@ -1,3 +1,9 @@
+/*
+ * Snake.java
+ *
+ * @author 2015-2016 APCS A-Block
+ * @author David C. Petty <dpetty@winchesterps.org>
+ */
 package snake;
 
 import junit.framework.Test;
@@ -5,34 +11,29 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 /**
- * Unit test for simple App.
+ * Unit test for Snake.
  */
-public class AppTest 
-    extends TestCase
-{
+public class SnakeTest extends TestCase {
     /**
      * Create the test case
      *
      * @param testName name of the test case
      */
-    public AppTest( String testName )
-    {
-        super( testName );
+    public SnakeTest(String testName) {
+        super(testName);
     }
 
     /**
      * @return the suite of tests being tested
      */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
+    public static Test suite() {
+        return new TestSuite(SnakeTest.class);
     }
 
     /**
      * Rigourous Test :-)
      */
-    public void testApp()
-    {
+    public void testApp() {
         assertTrue( true );
     }
 }
