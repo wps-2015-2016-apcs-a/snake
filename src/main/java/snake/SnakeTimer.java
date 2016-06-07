@@ -16,13 +16,13 @@ public class SnakeTimer implements ActionListener
   //////////////////////////////////////FIELDS/////////////////////////////////////////////
   Timer boardRedrawTimer;
   boolean paused;
-  ActionListener task = new ActionListener();
+//  ActionListener task = new ActionListener();
+  static final int DELAY1 = 8;
   
   /////////////////////////////////////CONSTRUCTOR////////////////////////////////////////
   public SnakeTimer()
   {
-    
-    boardRedrawTimer = new Timer(1000, task);
+    boardRedrawTimer = new Timer(1000, this);
     paused = false;
   }
   
@@ -30,8 +30,8 @@ public class SnakeTimer implements ActionListener
   
   public void actionPerformed(ActionEvent e)
   {
-    //repaintBoard();               //Will be uncomented after people actually get stuff working (Jacob and Ryan's fault)
-    //repaintSnake();               //Will be uncomented after people actually get stuff working (Becca and Ella's fault)
+    //repaintBoard();               //Will be uncommented after people actually get stuff working (Jacob and Ryan's fault)
+    //repaintSnake();               //Will be uncommented after people actually get stuff working (Becca and Ella's fault)
   }
   
   
@@ -49,8 +49,20 @@ public class SnakeTimer implements ActionListener
     }
   }
 
-  public void strat()
+  public int getDelay1()
   {
-
+    return DELAY1;
   }
+
+  public void strat()// Yes, I do know that I misspelled it. It was very intentional. I had my reasons. Stop doubting me
+  {
+    boardRedrawTimer.start();
+  }
+
+  public void strop()// Yes, I do know that I misspelled it. It was very intentional. I had my reasons. Stop doubting me
+  {
+    boardRedrawTimer.stop();
+  }
+
+
 }
