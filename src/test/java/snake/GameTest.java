@@ -1,5 +1,5 @@
 /*
- * Snake.java
+ * GameTest.java
  *
  * @author 2015-2016 APCS A-Block
  * @author David C. Petty <dpetty@winchesterps.org>
@@ -11,15 +11,15 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 /**
- * Unit test for Snake.
+ * Unit test for Game.
  */
-public class SnakeTest extends TestCase {
+public class GameTest extends TestCase {
     /**
      * Create the test case
      *
      * @param testName name of the test case
      */
-    public SnakeTest(String testName) {
+    public GameTest(String testName) {
         super(testName);
     }
 
@@ -27,7 +27,7 @@ public class SnakeTest extends TestCase {
      * @return the suite of tests being tested
      */
     public static Test suite() {
-        return new TestSuite(SnakeTest.class);
+        return new TestSuite(GameTest.class);
     }
 
     /**

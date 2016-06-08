@@ -1,3 +1,10 @@
+/*
+ * Buttons.java
+ *
+ * @author 2015-2016 APCS A-Block
+ */
+package snake;
+
 public class Buttons  {
 /*//Replace with actual symbols
 private JButton Up = new JButton("Up");
