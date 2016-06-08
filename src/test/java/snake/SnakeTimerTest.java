@@ -10,7 +10,7 @@ package snake;
 import org.junit.*;
 
 /**
- * Unit test for SnakeTimer.
+ * Unit test for {@link SnakeTimer}.
  */
 public class SnakeTimerTest {
     /**

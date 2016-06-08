@@ -9,7 +9,7 @@ package snake;
 import org.junit.*;
 
 /**
- * Unit test for Snake.
+ * Unit test for {@link Snake}.
  */
 public class SnakeTest {
     /**

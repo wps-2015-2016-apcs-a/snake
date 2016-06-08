@@ -9,7 +9,7 @@ package snake;
 import org.junit.*;
 
 /**
- * Unit test for Keyboard.
+ * Unit test for {@link Keyboard}.
  */
 public class KeyboardTest {
     /**

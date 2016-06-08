@@ -9,7 +9,7 @@ package snake;
 import org.junit.*;
 
 /**
- * Unit test for Buttons.
+ * Unit test for {@link Buttons}.
  */
 public class ButtonsTest {
     /**

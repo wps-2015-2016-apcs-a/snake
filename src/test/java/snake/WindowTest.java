@@ -9,7 +9,7 @@ package snake;
 import org.junit.*;
 
 /**
- * Unit test for Window.
+ * Unit test for {@link Window}.
  */
 public class WindowTest {
     /**

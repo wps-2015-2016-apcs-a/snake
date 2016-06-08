@@ -9,7 +9,7 @@ package snake;
 import org.junit.*;
 
 /**
- * Unit test for Coordinate.
+ * Unit test for {@link Coordinate}.
  */
 public class CoordinateTest {
 
@@ -77,8 +77,9 @@ public class CoordinateTest {
                 expected[i].equals(actual[i]));
         expected = new Coordinate[] { c1, c1, c2, c2, c3, };
         actual = new Coordinate[] { c2, c3, c3, c4, c4, };
+        assert expected.length == actual.length : "testEquals: bad data";
         for (int i = 0; i < expected.length; i++)
-            Assert.assertFalse(expected[i] + " != " + actual[i] + ".",
+            Assert.assertFalse(expected[i] + " == " + actual[i] + ".",
                 expected[i].equals(actual[i]));
     }
 

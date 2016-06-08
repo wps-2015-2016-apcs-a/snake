@@ -9,7 +9,7 @@ package snake;
 import org.junit.*;
 
 /**
- * Unit test for Grid.
+ * Unit test for {@link Grid}.
  */
 public class GridTest {
     /**
