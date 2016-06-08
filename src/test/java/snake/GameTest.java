@@ -6,34 +6,29 @@
  */
 package snake;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.*;
 
 /**
  * Unit test for Game.
  */
-public class GameTest extends TestCase {
+public class GameTest {
     /**
-     * Create the test case
-     *
-     * @param testName name of the test case
+     * Set up before every test.
      */
-    public GameTest(String testName) {
-        super(testName);
+    @Before
+    public void setUp() {
     }
-
     /**
-     * @return the suite of tests being tested
+     * Tear down after every test.
      */
-    public static Test suite() {
-        return new TestSuite(GameTest.class);
+    @After
+    public void tearDown() {
     }
-
     /**
      * Rigourous Test :-)
      */
+    @Test
     public void testApp() {
-        assertTrue( true );
+        Assert.assertTrue( true );
     }
 }

@@ -1,5 +1,5 @@
 /*
- * KeyboardTest.java
+ * WindowTest.java
  *
  * @author 2015-2016 APCS A-Block
  * @author David C. Petty <dpetty@winchesterps.org>
@@ -9,9 +9,9 @@ package snake;
 import org.junit.*;
 
 /**
- * Unit test for Keyboard.
+ * Unit test for Window.
  */
-public class KeyboardTest {
+public class WindowTest {
     /**
      * Set up before every test.
      */

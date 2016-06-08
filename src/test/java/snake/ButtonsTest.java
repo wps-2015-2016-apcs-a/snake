@@ -2,38 +2,33 @@
  * ButtonsTest.java
  *
  * @author 2015-2016 APCS A-Block
- * @author Misha Pilipchuk <misha@pilipchuk.org>
+ * @author Misha Pilipchuk
  */
 package snake;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.*;
 
 /**
- * Unit test for Button.
+ * Unit test for Buttons.
  */
-public class ButtonsTest extends TestCase {
+public class ButtonsTest {
     /**
-     * Create the test case
-     *
-     * @param testName name of the test case
+     * Set up before every test.
      */
-    public ButtonsTest(String testName) {
-        super(testName);
+    @Before
+    public void setUp() {
     }
-
     /**
-     * @return the suite of tests being tested
+     * Tear down after every test.
      */
-    public static Test suite() {
-        return new TestSuite(SnakeTest.class);
+    @After
+    public void tearDown() {
     }
-
     /**
      * Rigourous Test :-)
      */
+    @Test
     public void testApp() {
-        assertTrue( true );
+        Assert.assertTrue( true );
     }
 }
