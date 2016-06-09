@@ -2,39 +2,34 @@
  * SnakeTimerTest.java
  *
  * @author 2015-2016 APCS A-Block
- * @author Nathan Li <nathanli6065@gmail.com>
- * @author Misha Pilipchuk <misha@pilipchuk.org>
+ * @author Nathan Li
+ * @author Misha Pilipchuk
  */
 package snake;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.*;
 
 /**
- * Unit test for SnakeTimer.
+ * Unit test for {@link SnakeTimer}.
  */
-public class SnakeTimerTest extends TestCase {
+public class SnakeTimerTest {
     /**
-     * Create the test case
-     *
-     * @param testName name of the test case
+     * Set up before every test.
      */
-    public SnakeTimerTest(String testName) {
-        super(testName);
+    @Before
+    public void setUp() {
     }
-
     /**
-     * @return the suite of tests being tested
+     * Tear down after every test.
      */
-    public static Test suite() {
-        return new TestSuite(SnakeTimerTest.class);
+    @After
+    public void tearDown() {
     }
-
     /**
      * Rigourous Test :-)
      */
+    @Test
     public void testApp() {
-        assertTrue( true );
+        Assert.assertTrue( true );
     }
 }

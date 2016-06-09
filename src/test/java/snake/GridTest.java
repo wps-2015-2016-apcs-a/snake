@@ -1,5 +1,5 @@
 /*
- * KeyboardTest.java
+ * GridTest.java
  *
  * @author 2015-2016 APCS A-Block
  * @author David C. Petty <dpetty@winchesterps.org>
@@ -9,9 +9,9 @@ package snake;
 import org.junit.*;
 
 /**
- * Unit test for {@link Keyboard}.
+ * Unit test for {@link Grid}.
  */
-public class KeyboardTest {
+public class GridTest {
     /**
      * Set up before every test.
      */

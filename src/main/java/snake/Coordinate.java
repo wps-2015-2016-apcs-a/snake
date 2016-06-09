@@ -7,7 +7,7 @@
 package snake;
 
 /**
- * Coordinate class for the grid.
+ * Coordinate class for the {@link Grid}.
  */
 public class Coordinate {
 
@@ -16,55 +16,36 @@ public class Coordinate {
     /** Holds column. */
     private int col;
 
-    /** Construct a Coordinate.
+    /**
+     * Constructs a {@link Coordinate}.
+     *
+     * @param row row of this Coordinate
+     * @param col col of this Coordinate
      */
     public Coordinate(int row, int col) {
         this.row = row;
         this.col = col;
     }
 
-    /** Return row of this coordinate.
+    /**
+     * Returns row of this {@link Coordinate}.
      *
-     * @return row of this coordinate
+     * @return row of this Coordinate
      */
     public int getRow() { return row; }
 
-    /** Return column of this coordinate.
+    /**
+     * Returns column of this {@link Coordinate}.
      *
-     * @return column of this coordinate
+     * @return column of this Coordinate
      */
     public int getCol() { return col; }
 
-    /** Return true if that is non-null, rows are equal, and cols are equal.
-     * 
-     * @return this.row == that.row && this.col == that.col
-     */
-    public boolean equals(Coordinate that) {
-//        if (this == that) return true;
-        if (that == null) return false;
-//        if (!(that instanceof Coordinate)) return false;
-        return this.getRow() == that.getRow()
-            && this.getCol() == that.getCol();
-    }
-
-    /** Returns a hash code value for this object.
-     * 
-     * @return hash code value for this.
-     */
-    public int hashcode() {
-        return (row * 17 + col) * 17;
-    }
-
-    /** Return String representation of this.
+    /**
+     * Returns true if <code>that</code> is non-null and <code>this</code> 
+     * is adjacent to <code>that</code>.
      *
-     * @return String representation of this
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder("(");
-        return sb.append(row).append(",").append(col).append(")").toString();
-    }
-    /** Return true if that is non-null and this is adjacent to that.
-     *
+     * @param that {@link Coordinate} that is potentially adjacent to this
      * @return true if this is adjacent to that, otherwise false
      */
     public boolean isAdjacent(Coordinate that) {
@@ -73,5 +54,31 @@ public class Coordinate {
         int yDiff = Math.abs(this.getRow() - that.getRow());
         return this.getRow() == that.getRow() && xDiff == 1
             || this.getCol() == that.getCol() && yDiff == 1;
+    }
+
+    /**
+     * Returns true if <code>that</code> is non-null and row and col are equal. 
+     * (Not done completely in accordance with 
+     * <a href="http://www.javapractices.com/topic/TopicAction.do?Id=17">overriding</a>
+     * <code>.equals</code> in {@link Object}).
+     *
+     * @param that {@link Coordinate} who's state is to be compared with <code>this</code>
+     * @return this.row == that.row &amp;&amp; this.col == that.col
+     */
+    public boolean equals(Coordinate that) {
+        return that != null
+            && this.getRow() == that.getRow()
+            && this.getCol() == that.getCol();
+    }
+
+    /**
+     * Return {@link String} representation of <code>this</code>.
+     *
+     * @return String representation of this
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("(");
+        return sb.append(row).append(",").append(col).append(")").toString();
     }
 }
