@@ -9,8 +9,9 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Window extends JPanel {
-    
-    private JFrame f; // TEST
+    /** The main {@link Jframe}. */
+    private JFrame f;
+    /** The main {@link JPanel}. */
     private JPanel p;
     
     public Window() {
