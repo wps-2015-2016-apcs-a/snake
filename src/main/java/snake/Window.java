@@ -8,46 +8,41 @@ package snake;
 import java.awt.*;
 import javax.swing.*;
 
-/** THIS IS THE WICKEDEST AWESOMEST GAME EVA! */
+/**
+ * The main {@link JPanel} for the Snake game.
+ */
 public class Window extends JPanel {
-    /** The main {@link Jframe}. */
-    private JFrame f;
-    /** The main {@link JPanel}. */
-    private JPanel p;
+    
+    public static final int PREFERRED_WIDTH = 800;
+    public static final int PREFERRED_HEIGHT = 600;
+    public static final int SIDE = 8;
     
     public Window() {
-        create();
+        setBackground(Color.PINK);
+        setVisible(true);
     }
     
-    public void drawSquare(Graphics g) {
-        // createGrid();
+    /**
+     * Paint the component using a {@link Graphics} rendering object.
+     *
+     * @param g The Graphics rendering object
+     */
+    public void paintComponent(Graphics g) 
+    { 
+        super.paintComponent(g);  // paint background
+
+        final int rows = getHeight() / SIDE, cols = getWidth() / SIDE;
         // RED_FLAG: where do these numbers come from?
-        for(int i = 0; i < 100; i++) {
-            for(int j = 0; j < 75; j++) {
-                if (i == 0 || i == 99 || j == 0 || j == 74) {
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                if (row % 10 == 0 || col % 10 == 0) {
                     g.setColor(Color.GRAY);
-                    g.drawRect(i * 8, j * 8, 8, 8);
                 }
                 else {
                     g.setColor(Color.BLACK);
-                    g.drawRect(i * 8, j * 8, 8, 8);
                 }
+                g.drawRect(col * SIDE, row * SIDE, SIDE, SIDE);
             }
         }
-    }
-    
-    public void create() {
-        f = new JFrame("test");
-        f.setVisible(true);
-        f.setSize(800, 600);
-        
-        p = new JPanel();
-        p.setBackground (Color.BLACK);
-
-        f.add(p);
-    }
-    
-    public static void main(String[] args) {
-        new Window();
     }
 }
