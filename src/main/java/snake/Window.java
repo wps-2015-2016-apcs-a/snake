@@ -8,6 +8,7 @@ package snake;
 import java.awt.*;
 import javax.swing.*;
 
+/** THIS IS THE WICKEDEST AWESOMEST GAME EVA! */
 public class Window extends JPanel {
     /** The main {@link Jframe}. */
     private JFrame f;
