@@ -9,7 +9,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Window extends JPanel {
-    
+    /** The main {@link Jframe}. */
     private JFrame f;
     private JPanel p;
     
