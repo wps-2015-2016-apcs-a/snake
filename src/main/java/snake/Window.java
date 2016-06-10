@@ -10,7 +10,7 @@ import javax.swing.*;
 
 public class Window extends JPanel {
     
-    private JFrame f;
+    private JFrame f; // TEST
     private JPanel p;
     
     public Window() {
