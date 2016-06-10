@@ -18,31 +18,31 @@ public class Window extends JPanel {
         create();
     }
     
-    public void createGrid(Graphics g) {
+     public void paintComponent(Graphics g) {
         // createGrid();
         // RED_FLAG: where do these numbers come from?
         super.paintComponent(g);
         for(int i = 0; i < 100; i++) {
             for(int j = 0; j < 75; j++) {
                 if (i == 0 || i == 99 || j == 0 || j == 74) {
-                    g.setColor(Color.GRAY);
-                    g.fillRect(i * 8, j * 8, 8, 8);
+                    //g.setColor(Color.GRAY);
+                    g.drawRect(i * 8, j * 8, 8, 8);
                 }
                 else {
-                    g.setColor(Color.BLACK);
-                    g.fillRect(i * 8, j * 8, 8, 8);
+                    //g.setColor(Color.BLACK);
+                    g.drawRect(i * 8, j * 8, 8, 8);
                 }
             }
         }
     }
-    
+
     public void create() {
         f = new JFrame("test");
         f.setVisible(true);
         f.setSize(800, 600);
         
         p = new JPanel();
-        p.setBackground (Color.BLACK);
+        p.setBackground (Color.WHITE);
 
         f.add(p);
     }
