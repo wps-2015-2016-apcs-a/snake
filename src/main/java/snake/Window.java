@@ -12,6 +12,7 @@ import javax.swing.*;
 public class Window extends JPanel {
     /** The main {@link Jframe}. */
     private JFrame f;
+    /** The main {@link JPanel}. */
     private JPanel p;
     
     public Window() {
