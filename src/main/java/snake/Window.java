@@ -17,18 +17,19 @@ public class Window extends JPanel {
         create();
     }
     
-    public void drawSquare(Graphics g) {
+    public void createGrid(Graphics g) {
         // createGrid();
         // RED_FLAG: where do these numbers come from?
+        super.paintComponent(g);
         for(int i = 0; i < 100; i++) {
             for(int j = 0; j < 75; j++) {
                 if (i == 0 || i == 99 || j == 0 || j == 74) {
                     g.setColor(Color.GRAY);
-                    g.drawRect(i * 8, j * 8, 8, 8);
+                    g.fillRect(i * 8, j * 8, 8, 8);
                 }
                 else {
                     g.setColor(Color.BLACK);
-                    g.drawRect(i * 8, j * 8, 8, 8);
+                    g.fillRect(i * 8, j * 8, 8, 8);
                 }
             }
         }

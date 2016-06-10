@@ -2,6 +2,8 @@
  * Grid.java
  *
  * @author 2015-2016 APCS A-Block
+ * @author Jacob Lowen <add email>
+ * @author Ryan Delaney <rcdelaney0@gmail.com>
  */
 package snake;
 
