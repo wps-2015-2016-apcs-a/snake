@@ -24,12 +24,12 @@ public class Game {
      */
     public static void main(String[] args) {
         System.out.println("# Snake");
-        JFrame window = new JFrame("Snake");
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setSize(Window.PREFERRED_WIDTH, Window.PREFERRED_HEIGHT);
-        Window panel = new Window();
-        Container c = window.getContentPane();
-        c.add(panel);
-        window.setVisible(true);
+        JFrame frame = new JFrame("Snake");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Container c = frame.getContentPane();
+        Window window = new Window();
+        c.add(window);
+        frame.pack();
+        frame.setVisible(true);
     }
 }
