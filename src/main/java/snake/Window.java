@@ -2,6 +2,8 @@
  * Window.java
  *
  * @author 2015-2016 APCS A-Block
+ * @author Jacob Lowen
+ * @author Misha Pilipchuk
  */
 package snake;
 
@@ -25,14 +27,12 @@ public class Window extends JPanel {
     /**
      * Paint the component using a {@link Graphics} rendering object.
      *
-     * @param g The Graphics rendering object
+     * @param g the Graphics rendering object
      */
     public void paintComponent(Graphics g) 
     { 
         super.paintComponent(g);  // paint background
-
         final int rows = getHeight() / SIDE, cols = getWidth() / SIDE;
-        // RED_FLAG: where do these numbers come from?
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 if (row % 10 == 0 || col % 10 == 0) {

@@ -12,11 +12,18 @@ public class Grid {
     Grid body;
     Grid head;
     Grid food;
-        
+    
+    ///////////////////FIELDS/////////////////////
+    public static final int HEIGHT = 600;
+    public static final int WIDTH = 800;
+    public static final int SIZE = 8;
+    public static final int SQRHEIGHT = (HEIGHT / SIZE);
+    public static final int SQRWIDTH = (WIDTH / SIZE);
+    
     public void createGrid() {
-        for (int i = 0; i < 100; i++) {
-            for (int j = 0; j < 75; j++) {
-                if (i==0 || i==99 || j==0 || j == 74) {
+        for (int i = 0; i < SQRWIDTH; i++) {
+            for (int j = 0; j < SQRHEIGHT; j++) {
+                if (i == 0 || i == (SQRWIDTH - 1) || j == 0 || j == (SQRHEIGHT - 1)) {
                     grid[i][j] = wall;
                 }
                 else {
