@@ -6,8 +6,11 @@
  */
 package snake;
 
+import java.awt.*;
+import javax.swing.*;
+
 /**
- * Game class.
+ * Game class initializes Snake game.
  */
 public class Game {
 
@@ -15,11 +18,18 @@ public class Game {
     private static int privateTest;
 
     /**
-     * Snake main method.
+     * Snake Game main method.
      *
      * @param args command-line arguments
      */
     public static void main(String[] args) {
         System.out.println("# Snake");
+        JFrame frame = new JFrame("Snake");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Container c = frame.getContentPane();
+        Window window = new Window();
+        c.add(window);
+        frame.pack();
+        frame.setVisible(true);
     }
 }
