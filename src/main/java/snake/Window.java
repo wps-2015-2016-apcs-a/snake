@@ -3,7 +3,6 @@
  *
  * @author 2015-2016 APCS A-Block
  * @author Jacob Lowen
- * @author Ryan Delaney <rcdelaney0@gmail.com>
  * @author Misha Pilipchuk
  */
 package snake;
@@ -54,7 +53,7 @@ public class Window extends JPanel {
     public void paintComponent(Graphics g) 
     {
         super.paintComponent(g);// paint background
-        System.out.printf("%s, %s; ", getWidth(), getHeight());
+        // System.out.printf("%s, %s; ", getWidth(), getHeight());
         final int rows = getHeight() / SIDE, cols = getWidth() / SIDE;
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
