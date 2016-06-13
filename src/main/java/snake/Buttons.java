@@ -24,28 +24,42 @@ public class Buttons {
     public Buttons() {
         Up.addActionListener(new ActionListener() {
                                  public void actionPerformed(ActionEvent e) {
-                                     System.out.println("Turn upwards");
+//                                     Snake.move();
                                  }
                              }
         );
         Right.addActionListener(new ActionListener() {
                                     public void actionPerformed(ActionEvent e) {
-                                        System.out.println("Turn right");
+//                                     Snake.move();
                                     }
                                 }
         );
         Left.addActionListener(new ActionListener() {
                                    public void actionPerformed(ActionEvent e) {
-                                       System.out.println("Turn left");
+//                                     Snake.move();
                                    }
                                }
         );
         Down.addActionListener(new ActionListener() {
                                    public void actionPerformed(ActionEvent e) {
-                                       System.out.println("Turn down");
+//                                     Snake.move();
                                    }
                                }
         );
+    }
+
+    /////////////////////////////////////////METHODS//////////////////////////////////////
+
+    private void tell()
+    {
+        System.out.println("THERE IS NO USE FOR THIS CLASS");
+    }
+
+
+    public static void main(String[] args)
+    {
+        Buttons a = new Buttons();
+        a.tell();
     }
 }
 
