@@ -36,19 +36,10 @@ public class SnakeTimer implements ActionListener {
      */
     boolean paused;
 
-    /**
-     *
-     */
-    ActionListener task = new ActionListener(){
-        public void actionPerformed(ActionEvent e) {
-            //repaintBoard();               //Will be uncommented after people actually get stuff working (Jacob and Ryan's fault)
-            //repaintSnake();               //Will be uncommented after people actually get stuff working (Becca and Ella's fault)
-        }
-    };
 
     /////////////////////////////////////CONSTRUCTOR////////////////////////////////////////
     public SnakeTimer() {
-        boardRedrawTimer = new Timer(DELAY1, task);
+        boardRedrawTimer = new Timer(DELAY1, this);
         paused = false;
     }
 
@@ -71,7 +62,13 @@ public class SnakeTimer implements ActionListener {
         }
     }
 
-    public void actionPerformed(ActionEvent e) {};
+    /**
+     *@Override Creates an action listener that is supposed to be activated every Delay1 milliseconds
+     * @param e
+     */
+    public void actionPerformed(ActionEvent e) {
+//        Snake.move();      //Will uncomment when Becca fixes her part (hers is commented so mine doesn't work)
+    };
 
     /**
      * @return Delay between the refreshes
@@ -83,14 +80,14 @@ public class SnakeTimer implements ActionListener {
      *
      * Yes, I do know that I misspelled it. It was very intentional. I had my reasons. Stop doubting me. I have reasons.
      */
-    public void starta()   {boardRedrawTimer.start();}
+    public void strart()   {boardRedrawTimer.start();}
 
     /**
      * This is the stop method
      *
      * Yes, I do know that I misspelled it. It was very intentional. I had my reasons. Stop doubting me. I have reasons.
      */
-    public void stopa()   {boardRedrawTimer.stop();}
+    public void strop()   {boardRedrawTimer.stop();}
 
 
 }
