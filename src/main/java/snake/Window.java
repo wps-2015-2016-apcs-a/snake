@@ -3,6 +3,7 @@
  *
  * @author 2015-2016 APCS A-Block
  * @author Jacob Lowen
+ * @author Ryan Delaney <rcdelaney0@gmail.com>
  * @author Misha Pilipchuk
  */
 package snake;
