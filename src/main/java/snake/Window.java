@@ -36,6 +36,16 @@ public class Window extends JPanel {
     }
 
     /**
+     * Returns the minimum size of this container as a {@link Dimension}.
+     *
+     * @return the minimum size of this container
+     */
+    @Override
+    public Dimension getMinimumSize() {
+        return getPreferredSize();
+    }
+
+    /**
      * Returns the {@link Grid} size as a {@link Dimension}.
      *
      * @return the Grid size
