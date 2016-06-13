@@ -8,6 +8,7 @@
 package snake;
 
 import java.util.*;
+import java.awt.*;
 
 public class Snake {
     
@@ -15,8 +16,7 @@ public class Snake {
     private LinkedList<Coordinate> snake;
     private int size;
     private Coordinate head, tail;
-    // public enum Direction { UP, RIGHT, DOWN, LEFT }
-    // private Direction direction;
+    private int direction;
     
     public Snake() {
         head = new Coordinate(1, 1);
@@ -28,64 +28,53 @@ public class Snake {
     public int getScore() { return size; }
     
     // For these turn methods: the user pressing any key will prompt these methods
-    /*
     public void turnUp() {
-      direction = UP; // not exactly sure if i can hold a specific enum value and change it in a field?
+      direction = 1;
     }
     
+    public LinkedList<Coordinate> getSnake() { return snake; }
+    
     public void turnRight() {
-      direction = RIGHT;
+      direction = 2;
     }
     
     public void turnDown() {
-      direction = DOWN;
+      direction = 3;
     }
     
     public void turnLeft() {
-      direction = LEFT;
+      direction = 4;
     }
     
     public Coordinate findMoveCoordinate() { // returns the coordinate that the snake should move to next
-        switch(direction) {
-            case UP:
-                return new Coordinate(head.getRow(), head.getCol() - 1);
-                break;
-            case RIGHT:
-                return new Coordinate(head.getRow() + 1, head.getCol());
-                break;
-            case DOWN:
-                return new Coordinate(head.getRow(), head.getCol() + 1);
-                break;
-            case LEFT:
-                return new Coordinate(head.getRow() - 1, head.getCol());
-            default:
-                return null;
-                break;
-        }
+        if (direction == 1) return new Coordinate(head.getRow(), head.getCol() - 1);
+        else if (direction == 2) return new Coordinate(head.getRow() + 1, head.getCol());
+        else if (direction == 3) return new Coordinate(head.getRow(), head.getCol() + 1);
+        else if (direction == 4) return new Coordinate(head.getRow() - 1, head.getCol());
+        else return null;
     }
     
     public void move() {
-        Coordinate next = findMoveCoordinate();
-        if (next.isSnakeSegment()); // need method to test if something is a snake segment or not
-                                    // also: how to deal with ending the game?
-        else if (next.equals(food)) // not sure where the food variable is at this point
-            snake.grow();
-        else if (next.getRow() < 0 || next.getCol() < 0 || next.getRow() >= grid.width() 
-                     || next.getCol() >= grid.getHeight());  // are there fixed values for width and height that i should plug in
-        //throw some error or end game or whatever
+        Coordinate next = findMoveCoordinate(); // how to test if its part of the snake
+        if (snake.contains(next));
+            // Game.gameOver(); // need method to test if something is a snake segment or not
+        // else if (next.equals(Grid.getFood())) // not sure where the food variable is at this point
+        //     grow();
+        // else if (Grid.testWall())
+            // Game.gameOver();
         else {
-            snake.remove(tail); //this unlinks it, but we need to return it to the grid color
+            snake.remove(tail);
             snake.add(0, next);
             head = next;
-            tail = snake.getNth(size - 1); //resets tail to the new last segment // getNth is a LinkedList method?
+            tail = snake.get(size - 1); //resets tail to the new last segment
         }
     }
     
-    public void grow() { // we could just make this part of the move method
+    public void grow() {
         Coordinate newSegment = findMoveCoordinate();
         snake.add(0, newSegment);
+        // Grid.addFood();
         size++;
         head = newSegment;
     }
-    */
 }
