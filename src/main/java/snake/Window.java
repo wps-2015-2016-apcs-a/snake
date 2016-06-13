@@ -15,9 +15,9 @@ import javax.swing.*;
  */
 public class Window extends JPanel {
 
-    public static final int PREFERRED_WIDTH = 800;
-    public static final int PREFERRED_HEIGHT = 600;
-    public static final int SIDE = 8;
+    public static final int PREFERRED_WIDTH = 960;
+    public static final int PREFERRED_HEIGHT = 720;
+    public static final int SIDE = 12;
 
     public Window() {
         setSize(getPreferredSize());
@@ -36,6 +36,15 @@ public class Window extends JPanel {
     }
 
     /**
+     * Returns the {@link Grid} size as a {@link Dimension}.
+     *
+     * @return the Grid size
+     */
+    public Dimension getGridSize() {
+        return new Dimension(PREFERRED_WIDTH / SIDE, PREFERRED_HEIGHT / SIDE);
+    }
+
+    /**
      * Paint the component using a {@link Graphics} rendering object.
      *
      * @param g the Graphics rendering object
@@ -44,15 +53,14 @@ public class Window extends JPanel {
     public void paintComponent(Graphics g) 
     {
         super.paintComponent(g);// paint background
+        System.out.printf("%s, %s; ", getWidth(), getHeight());
         final int rows = getHeight() / SIDE, cols = getWidth() / SIDE;
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                if (row % 10 == 0 || col % 10 == 0) {
+                if (row % 10 == 0 || col % 10 == 0)
                     g.setColor(Color.GRAY);
-                }
-                else {
+                else
                     g.setColor(Color.BLACK);
-                }
                 g.drawRect(col * SIDE, row * SIDE, SIDE, SIDE);
             }
         }
