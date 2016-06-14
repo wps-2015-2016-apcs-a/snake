@@ -7,6 +7,9 @@
 package snake;
 
 public class Grid {
+    private int width, height;
+    /* RED_FLAG: this is just a STUB to get things to compile. */
+    public Grid(int width, int height) { this.width = width; this.height = height; }
     private Grid[][] grid = new Grid[100][75]; // RED_FLAG: where do these numbers come from?
     Grid space = null;
     Grid wall;

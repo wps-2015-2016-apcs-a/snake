@@ -20,6 +20,8 @@ public class Game {
     private static Grid grid;
     /** Snake game {@link Snake}. */
     private static Snake snake;
+    /** Snake game {@link SnakeTimer}. */
+    private static SnakeTimer timer;
 
     /**
      * Returns {@link Window} object for this Snake game.
@@ -39,6 +41,12 @@ public class Game {
      * @return Snake object for this Snake game
      */
     public static Snake getSnake() { return snake; }
+    /**
+     * Returns {@link SnakeTimer} object for this Snake game.
+     *
+     * @return SnakeTimer object for this Snake game
+     */
+    public static SnakeTimer getSnakeTimer() { return timer; }
 
     /**
      * Snake Game main method.
@@ -56,6 +64,7 @@ public class Game {
         Dimension gridSize = window.getGridSize();
         grid = new Grid((int) gridSize.getWidth(), (int) gridSize.getHeight());
         snake = new Snake();
+        timer = new SnakeTimer();
 
         c.add(window);
         frame.pack();

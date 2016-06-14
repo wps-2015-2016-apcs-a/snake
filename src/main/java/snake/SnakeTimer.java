@@ -1,20 +1,15 @@
 /*
  * SnakeTimer.java
  * 
- * @author 2015 - 2016 APCS A Block
- * @author Misha Pilipchuk <misha@pilipchuk.org>
- * @author Nathan Li <nathanli6065@gmail.com>
+ * @author 2015-2016 APCS A Block
+ * @author Misha Pilipchuk
+ * @author Nathan Li
  */
-
-
 package snake;
 
-
-
-import javax.swing.Timer;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+import javax.swing.Timer;
 
 public class SnakeTimer implements ActionListener {
 
@@ -22,24 +17,25 @@ public class SnakeTimer implements ActionListener {
     /**
      * Holds the delay in the thing
      */
-    static final int DELAY1 = 70;
+    public static final int DELAY1 = 70;
 
     /**
      * Acts as the timer. Completely unnecessary given the name, but I was told to write comments
      */
-    Timer boardRedrawTimer;
+    private Timer boardRedrawTimer;
 
     /**
      * Holds whether or not the game is actively paused
      * True- it is
      * False- it isn't
      */
-    boolean paused;
+    private boolean paused;
 
 
     /////////////////////////////////////CONSTRUCTOR////////////////////////////////////////
     public SnakeTimer() {
         boardRedrawTimer = new Timer(DELAY1, this);
+        boardRedrawTimer.start();
         paused = false;
     }
 
@@ -63,14 +59,17 @@ public class SnakeTimer implements ActionListener {
     }
 
     /**
-     *@Override Creates an action listener that is supposed to be activated every Delay1 milliseconds
-     * @param e
+     * Invoked when a ({@link Timer}) action occurs.
+     * 
+     * @param e the {@link ActionEvent}
      */
     public void actionPerformed(ActionEvent e) {
-//        Snake.move();      //Will uncomment when Becca fixes her part (hers is commented so mine doesn't work)
+        Game.getSnake().move();      // move the snake
+        Game.getWindow().repaint();  // repaint the window
     };
 
     /**
+     * RED_FLAG: why is this accessor needed? DELAY1 is a static final
      * @return Delay between the refreshes
      */
     public static int getDelay1() {return DELAY1;}

@@ -64,6 +64,7 @@ public class Window extends JPanel {
     {
         super.paintComponent(g);// paint background
         // System.out.printf("%s, %s; ", getWidth(), getHeight());
+        // Draw the grid.
         final int rows = getHeight() / SIDE, cols = getWidth() / SIDE;
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
@@ -73,6 +74,14 @@ public class Window extends JPanel {
                     g.setColor(Color.BLACK);
                 g.drawRect(col * SIDE, row * SIDE, SIDE, SIDE);
             }
+        }
+        // Draw the snake.
+        for (Coordinate segment : Game.getSnake().getSnake()) {
+            int row = segment.getRow(), col = segment.getCol();
+            g.setColor(Color.BLACK);
+            g.fillRect(col * SIDE, row * SIDE, SIDE, SIDE);
+            g.setColor(Color.WHITE);
+            g.drawRect(col * SIDE, row * SIDE, SIDE, SIDE);
         }
     }
 }
