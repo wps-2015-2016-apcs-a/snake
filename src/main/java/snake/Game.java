@@ -14,8 +14,31 @@ import javax.swing.*;
  */
 public class Game {
 
-    /** Sample private field. */
-    private static int privateTest;
+    /** Snake game {@link Window}. */
+    private static Window window;
+    /** Snake game {@link Grid}. */
+    private static Grid grid;
+    /** Snake game {@link Snake}. */
+    private static Snake snake;
+
+    /**
+     * Returns {@link Window} object for this Snake game.
+     *
+     * @return Window object for this Snake game
+     */
+    public static Window getWindow() { return window; }
+    /**
+     * Returns {@link Grid} object for this Snake game.
+     *
+     * @return Grid object for this Snake game
+     */
+    public static Grid getGrid() { return grid; }
+    /**
+     * Returns {@link Snake} object for this Snake game.
+     *
+     * @return Snake object for this Snake game
+     */
+    public static Snake getSnake() { return snake; }
 
     /**
      * Snake Game main method.
@@ -27,7 +50,13 @@ public class Game {
         JFrame frame = new JFrame("Snake");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container c = frame.getContentPane();
-        Window window = new Window();
+
+        // Initialize static objects window, grid, and snake.
+        window = new Window();
+        Dimension gridSize = window.getGridSize();
+        grid = new Grid((int) gridSize.getWidth(), (int) gridSize.getHeight());
+        snake = new Snake();
+
         c.add(window);
         frame.pack();
         frame.setVisible(true);
