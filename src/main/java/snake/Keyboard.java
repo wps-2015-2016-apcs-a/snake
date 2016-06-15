@@ -27,7 +27,7 @@ public class Keyboard implements KeyListener {
             Game.getSnake().turnLeft();
             break;
           case KeyEvent.VK_RIGHT:
-            Game.getSnake().turnLeft();
+            Game.getSnake().turnRight();
             break;
             default:
                 break;
