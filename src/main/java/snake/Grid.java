@@ -10,32 +10,24 @@ public class Grid {
     private int width, height;
     /* RED_FLAG: this is just a STUB to get things to compile. */
     public Grid(int width, int height) { this.width = width; this.height = height; }
-    private Grid[][] grid = new Grid[100][75]; // RED_FLAG: where do these numbers come from?
-    Grid space = null;
-    Grid wall;
-    Grid body;
-    Grid head;
-    Grid food;
+   
     
     ///////////////////FIELDS/////////////////////
-    public static final int HEIGHT = 600;
-    public static final int WIDTH = 800;
+    public static final int HEIGHT = 900;
+    public static final int WIDTH = 1200;
     public static final int SIZE = 8;
-    public static final int SQRHEIGHT = (HEIGHT / SIZE);
-    public static final int SQRWIDTH = (WIDTH / SIZE);
     
-    public void createGrid() {
-        for (int i = 0; i < SQRWIDTH; i++) {
-            for (int j = 0; j < SQRHEIGHT; j++) {
-                if (i == 0 || i == (SQRWIDTH - 1) || j == 0 || j == (SQRHEIGHT - 1)) {
-                    grid[i][j] = wall;
-                }
-                else {
-                    grid[i][j] = space;
-                }
-            }
-        }
+   
+    public boolean testWall{
+        if (findMoveCoordinate().getRow() == 0 || findMoveCoordinate().getRow() == 1 || 
+            findMoveCoordinate().getRow() == 98 || findMoveCoordinate().getRow() == 99)
+            return true;
+        if (findMoveCoordinate().getCol() == 0 || findMoveCoordinate().getCol() == 1 ||
+            findMoveCoordinate().getCol() == 73 || findMoveCoordinate().getCol() == 74)
+            return true;
+        return false;
     }
+    
     public void addFood() {
         int rowFood = (int)(Math.random() + 100);
         int colFood = (int)(Math.random() + 100);
