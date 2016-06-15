@@ -1,20 +1,15 @@
 /*
  * SnakeTimer.java
  * 
- * @author 2015 - 2016 APCS A Block
- * @author Misha Pilipchuk <misha@pilipchuk.org>
- * @author Nathan Li <nathanli6065@gmail.com>
+ * @author 2015-2016 APCS A Block
+ * @author Misha Pilipchuk
+ * @author Nathan Li
  */
-
-
 package snake;
 
-
-
-import javax.swing.Timer;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+import javax.swing.Timer;
 
 public class SnakeTimer implements ActionListener {
 
@@ -22,33 +17,25 @@ public class SnakeTimer implements ActionListener {
     /**
      * Holds the delay in the thing
      */
-    static final int DELAY1 = 70;
+    public static final int DELAY1 = 70;
 
     /**
      * Acts as the timer. Completely unnecessary given the name, but I was told to write comments
      */
-    Timer boardRedrawTimer;
+    private Timer boardRedrawTimer;
 
     /**
      * Holds whether or not the game is actively paused
      * True- it is
      * False- it isn't
      */
-    boolean paused;
+    private boolean paused;
 
-    /**
-     *
-     */
-    ActionListener task = new ActionListener(){
-        public void actionPerformed(ActionEvent e) {
-            //repaintBoard();               //Will be uncommented after people actually get stuff working (Jacob and Ryan's fault)
-            //repaintSnake();               //Will be uncommented after people actually get stuff working (Becca and Ella's fault)
-        }
-    };
 
     /////////////////////////////////////CONSTRUCTOR////////////////////////////////////////
     public SnakeTimer() {
-        boardRedrawTimer = new Timer(DELAY1, task);
+        boardRedrawTimer = new Timer(DELAY1, this);
+        boardRedrawTimer.start();
         paused = false;
     }
 
@@ -71,9 +58,18 @@ public class SnakeTimer implements ActionListener {
         }
     }
 
-    public void actionPerformed(ActionEvent e) {};
+    /**
+     * Invoked when a ({@link Timer}) action occurs.
+     * 
+     * @param e the {@link ActionEvent}
+     */
+    public void actionPerformed(ActionEvent e) {
+        Game.getSnake().move();      // move the snake
+        Game.getWindow().repaint();  // repaint the window
+    };
 
     /**
+     * RED_FLAG: why is this accessor needed? DELAY1 is a static final
      * @return Delay between the refreshes
      */
     public static int getDelay1() {return DELAY1;}
@@ -83,14 +79,14 @@ public class SnakeTimer implements ActionListener {
      *
      * Yes, I do know that I misspelled it. It was very intentional. I had my reasons. Stop doubting me. I have reasons.
      */
-    public void starta()   {boardRedrawTimer.start();}
+    public void strart()   {boardRedrawTimer.start();}
 
     /**
      * This is the stop method
      *
      * Yes, I do know that I misspelled it. It was very intentional. I had my reasons. Stop doubting me. I have reasons.
      */
-    public void stopa()   {boardRedrawTimer.stop();}
+    public void strop()   {boardRedrawTimer.stop();}
 
 
 }
