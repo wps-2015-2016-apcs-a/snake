@@ -18,7 +18,8 @@ public class Grid {
     public static final int SIZE = 8;
     
    
-    if (findMoveCoordinate().getRow() == 0 || findMoveCoordinate().getRow() == 1 || 
+    public boolean testWall{
+        if (findMoveCoordinate().getRow() == 0 || findMoveCoordinate().getRow() == 1 || 
             findMoveCoordinate().getRow() == 98 || findMoveCoordinate().getRow() == 99)
             return true;
         if (findMoveCoordinate().getCol() == 0 || findMoveCoordinate().getCol() == 1 ||
