@@ -66,7 +66,9 @@ public class Game {
         snake = new Snake();
         timer = new SnakeTimer();
 
-        c.add(window);
+        window.addKeyListener(new Keyboard());
+        window.setFocusable(true);
+        c.add(window);        
         frame.pack();
         frame.setVisible(true);
     }
