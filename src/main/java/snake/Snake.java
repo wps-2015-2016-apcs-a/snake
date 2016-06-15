@@ -16,6 +16,9 @@ public class Snake {
     private int size;
     private Coordinate head, tail;
     // private Direction direction;
+    public Coordinate findMoveCoordinate(){
+        return new Coordinate(0, 0);
+    }
 /* 
     public Snake() {
         head = new Coordinate(1, 1);

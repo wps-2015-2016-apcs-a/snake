@@ -16,13 +16,13 @@ import javax.swing.*;
  */
 public class Window extends JPanel {
 
-    public static final int PREFERRED_WIDTH = 800;
-    public static final int PREFERRED_HEIGHT = 600;
-    public static final int SIDE = 8;
+    public static final int PREFERRED_WIDTH = 1200;
+    public static final int PREFERRED_HEIGHT = 900;
+    public static final int SIDE = 12;
 
     public Window() {
         setSize(getPreferredSize());
-        setBackground(Color.PINK); // why not?!
+        setBackground(Color.PINK); // why not?! We actually like it <3
         setVisible(true);
     }
 
@@ -44,12 +44,16 @@ public class Window extends JPanel {
     @Override
     public void paintComponent(Graphics g) 
     {
+        /**
+         * NOTE: In final version of game, the game grid will NOT have black lines. 
+         * We will keep them for now so it's easier to visualize different components. 
+         */
         super.paintComponent(g);// paint background
         final int rows = getHeight() / SIDE, cols = getWidth() / SIDE;
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 if (row % 10 == 0 || col % 10 == 0) {
-                    g.setColor(Color.GRAY);
+                    g.setColor(Color.BLACK);
                 }
                 else {
                     g.setColor(Color.BLACK);
