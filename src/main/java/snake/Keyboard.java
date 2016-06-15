@@ -17,9 +17,18 @@ public class Keyboard implements KeyListener {
         char id = e.getKeyChar();
         System.out.printf("%s ", id);
         switch(id) {
-            case KeyEvent.VK_UP:
-                Game.getSnake().turnUp();
-                break;
+          case KeyEvent.VK_UP:
+            Game.getSnake().turnUp();
+             break;
+          case KeyEvent.VK_DOWN:
+            Game.getSnake().turnDown();
+            break;
+          case KeyEvent.VK_LEFT:
+            Game.getSnake().turnLeft();
+            break;
+          case KeyEvent.VK_RIGHT:
+            Game.getSnake().turnLeft();
+            break;
             default:
                 break;
         }
