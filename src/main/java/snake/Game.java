@@ -13,7 +13,14 @@ import javax.swing.*;
  * Game class initializes Snake game.
  */
 public class Game {
+    
+    /**
+     * The three states of {@link Game}: PAUSED, RUNNING, OVER.
+     */
+    private enum State { PAUSED, RUNNING, OVER, };
 
+    /** Snake game State. */
+    private static State state;
     /** Snake game {@link Window}. */
     private static Window window;
     /** Snake game {@link Grid}. */
@@ -23,17 +30,22 @@ public class Game {
     /** Snake game {@link SnakeTimer}. */
     protected static SnakeTimer timer;
 
-
-    /**
-     *
-     * True- it is
-     * False- it isn't
-     */
-    public static boolean isRunning()
-    {
-        return true;
+    public static boolean isRunning() { return state == State.RUNNING; }
+    public static void gameOver() { state = State.OVER; }
+    public static void newGame() {
+        state = State.PAUSED;
+        Dimension gridSize = window.getGridSize();
+        grid = new Grid((int) gridSize.getWidth(), (int) gridSize.getHeight());
+        snake = new Snake();
+        timer = new SnakeTimer();
     }
-
+    public static void togglePause() {
+        if (state != State.OVER)
+            if (state == State.PAUSED)
+                state = State.RUNNING;
+            else
+                state = State.PAUSED;
+    }
     /**
      * Returns {@link Window} object for this Snake game.
      *
@@ -72,15 +84,13 @@ public class Game {
 
         // Initialize static objects window, grid, and snake.
         window = new Window();
-        Dimension gridSize = window.getGridSize();
-        grid = new Grid((int) gridSize.getWidth(), (int) gridSize.getHeight());
-        snake = new Snake();
-        timer = new SnakeTimer();
-
         window.addKeyListener(new Keyboard());
         window.setFocusable(true);
         c.add(window);        
         frame.pack();
         frame.setVisible(true);
+
+        // Start new game
+        newGame();
     }
 }
