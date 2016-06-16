@@ -10,9 +10,10 @@ public class Grid {
     private int width, height;
     /* RED_FLAG: this is just a STUB to get things to compile. */
     public Grid(int width, int height) { this.width = width; this.height = height; }
-
+    
     ///////////////////FIELDS/////////////////////
-
+    private Coordinate food;
+    
     public boolean testWall() {
         // RED_FLAG: where did these numbers come from?!
         if (Game.getSnake().findMoveCoordinate().getRow() == 0 || Game.getSnake().findMoveCoordinate().getRow() == 1 || 
@@ -29,8 +30,15 @@ public class Grid {
         int rowFood = 2 +(int)(Math.random() * 96);
         int colFood = 2 +(int)(Math.random() * 72);
         Coordinate food = new Coordinate (rowFood, colFood);
-        //if(Game.getSnake().contains(food))
-          //  addFood();
-        //Planning on making a loop to go through the snake
+        for (int i = 0; i < Game.getSnake().getScore(); i++){
+            if (Game.getSnake().contains(food))
+                addFood();
+        }
+    }
+    public boolean isFood(Coordinate coord) {
+        if (coord == food)
+            return true;
+        else
+            return false;
     }
 }

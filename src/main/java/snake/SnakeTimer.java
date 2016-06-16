@@ -17,7 +17,7 @@ public class SnakeTimer implements ActionListener {
     /**
      * Holds the delay in the thing
      */
-    public static final int DELAY1 = 90;
+    public static final int DELAY1 = 80;
 
     /**
      * Acts as the timer. Completely unnecessary given the name, but I was told to write comments
@@ -31,57 +31,19 @@ public class SnakeTimer implements ActionListener {
     public SnakeTimer() {
         boardRedrawTimer = new Timer(DELAY1, this);
         boardRedrawTimer.start();
-        Game.isPaused = false;
     }
 
     ////////////////////////////////////METHODS////////////////////////////////////////////////
-    /**
-     *  Controls the pause and unpause of time
-     *
-     */
-    private void theSpaceBarWasPressed()
-    {
-        if(Game.isPaused == false)
-        {
-            Game.isPaused = true;
-            boardRedrawTimer.stop();
-        }
-        else
-        {
-            Game.isPaused = false;
-            boardRedrawTimer.start();
-        }
-    }
-
     /**
      * Invoked when a ({@link Timer}) action occurs.
      * 
      * @param e the {@link ActionEvent}
      */
     public void actionPerformed(ActionEvent e) {
-        Game.getSnake().move();      // move the snake
-        Game.getWindow().repaint();  // repaint the window
-    };
-
-    /**
-     * RED_FLAG: why is this accessor needed? DELAY1 is a static final
-     * @return Delay between the refreshes
-     */
-    public static int getDelay1() {return DELAY1;}
-
-    /**
-     * This is the start method
-     *
-     * Yes, I do know that I misspelled it. It was very intentional. I had my reasons. Stop doubting me. I have reasons.
-     */
-    public void strart()   {boardRedrawTimer.start();}
-
-    /**
-     * This is the stop method
-     *
-     * Yes, I do know that I misspelled it. It was very intentional. I had my reasons. Stop doubting me. I have reasons.
-     */
-    public void strop()   {boardRedrawTimer.stop();}
-
+        if(Game.isRunning()) {
+            Game.getSnake().move();      // move the snake
+            Game.getWindow().repaint();  // repaint the window
+        }
+    }
 
 }
