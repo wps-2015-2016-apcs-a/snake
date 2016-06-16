@@ -68,6 +68,14 @@ public class Window extends JPanel {
         final int rows = getHeight() / SIDE, cols = getWidth() / SIDE;
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
+                if (row == 0 || row == 1 || row == rows - 2 || row == rows - 1){
+                    g.setColor(Color.BLUE);
+                    g.fillRect(col * SIDE, row * SIDE, SIDE, SIDE);
+                }
+                if (col == 0 || col == 1 || col == cols - 2 || col == cols - 1){
+                    g.setColor(Color.BLUE);
+                    g.fillRect(col * SIDE, row * SIDE, SIDE, SIDE);
+                }
                 if (row % 10 == 0 || col % 10 == 0)
                     g.setColor(Color.GRAY);
                 else
