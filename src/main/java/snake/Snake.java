@@ -79,14 +79,13 @@ public class Snake {
      */
     public void move() {
         Coordinate next = findMoveCoordinate(); 
-        if (snake.contains(next))
+        if (snake.contains(next) || Game.getGrid().testWall())
             Game.gameOver(); 
         else if (Game.getGrid().isFood(next)) {
-            for (int i = 0; i < 3; i++) grow();
+            for (int i = 0; i < 3; i++) 
+                grow();
             Game.getGrid().addFood();
         }
-        else if (Game.getGrid().testWall())
-        Game.gameOver();
         else {
             snake.remove(tail);
             snake.add(0, next);
@@ -99,9 +98,6 @@ public class Snake {
      */
     public void grow() {
         Coordinate newSegment = findMoveCoordinate();
-        if (Game.getGrid().testWall()) Game.gameOver();
-        else if (Game.getGrid().isFood(newSegment)) move();
-        else if (snake.contains(newSegment)) Game.gameOver();
         snake.add(0, newSegment);
         size++;
         head = newSegment;
