@@ -21,7 +21,14 @@ public class Game {
     /** Snake game {@link Snake}. */
     private static Snake snake;
     /** Snake game {@link SnakeTimer}. */
-    private static SnakeTimer timer;
+    protected static SnakeTimer timer;
+
+    /**
+     * Holds whether or not the game is actively paused
+     * True- it is
+     * False- it isn't
+     */
+    public static boolean isPaused;
 
     /**
      * Returns {@link Window} object for this Snake game.
