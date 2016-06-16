@@ -39,8 +39,9 @@ public class Keyboard implements KeyListener {
     /** Handle the key typed event from the text field. */
     public void keyTyped(KeyEvent e) {
       int id = e.getKeyCode();
+   
       switch(id) {
-            case KeyEvent.VK_SPACE:
+           case KeyEvent.VK_SPACE:
                 Game.getSnake().togglePause();
                 break;
            case KeyEvent.VK_R:
@@ -48,6 +49,7 @@ public class Keyboard implements KeyListener {
               break;
             default:
                 break;
+   
     }
 }
 }
