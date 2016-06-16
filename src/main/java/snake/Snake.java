@@ -31,7 +31,7 @@ public class Snake {
     public List<Coordinate> getSnake() { return snake; }
 
     private void setDirection(Direction direction) { this.direction = direction; }
-    // For these turn methods: the user pressing any key will prompt these methods
+    /** The user pressing an arrow key will prompt the corresponding method to change direction. */
     public void turnUp() { setDirection(Direction.UP); }
     public void turnRight() { setDirection(Direction.RIGHT); }
     public void turnDown() { setDirection(Direction.DOWN); }
@@ -62,7 +62,9 @@ public class Snake {
         }
         return moveCoordinate;
     }
-    
+    /**
+     * Checks whether a coordinate object is already in the snake.
+     */
     public boolean contains(Coordinate c) {
       for (int i = 0; i < size; i++) {
         if (snake.get(i).equals(c))
@@ -70,12 +72,16 @@ public class Snake {
       }
       return false;
     }
-
+    /**
+     * Calls findMoveCoordinate() and tests whether the next movement is valid.
+     * 
+     * If not, the game ends. Otherwise, the snake either moves or grows.
+     */
     public void move() {
         Coordinate next = findMoveCoordinate(); // how to test if its part of the snake
         if (snake.contains(next));
         // Game.gameOver(); // need method to test if something is a snake segment or not
-        // else if (next.equals(Grid.getFood())) { // not sure where the food variable is at this point
+        // else if (isFood(next)) { // not sure where the food variable is at this point
         //     for (int i = 0; i < 3; i++) grow();
         //     Grid.addFood();
         // }
@@ -88,9 +94,13 @@ public class Snake {
             tail = snake.get(size - 1); //resets tail to the new last segment
         }
     }
-
+    /**
+     * Adds a segment to the snake.
+     */
     public void grow() {
         Coordinate newSegment = findMoveCoordinate();
+        // if (Grid.testWall()) Game.gameOver();
+        // if (isFood(newSegment)) move();
         snake.add(0, newSegment);
         size++;
         head = newSegment;
