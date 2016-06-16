@@ -77,7 +77,7 @@ public class Window extends JPanel {
                     g.fillRect(col * SIDE, row * SIDE, SIDE, SIDE);
                 }
                 if (row % 10 == 0 || col % 10 == 0)
-                    g.setColor(Color.GRAY);
+                    g.setColor(Color.BLACK);
                 else
                     g.setColor(Color.BLACK);
                 g.drawRect(col * SIDE, row * SIDE, SIDE, SIDE);
