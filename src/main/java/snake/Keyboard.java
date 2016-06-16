@@ -42,7 +42,7 @@ public class Keyboard implements KeyListener {
    
       switch(id) {
            case KeyEvent.VK_SPACE:
-                Game.getSnake().togglePause();
+                Game.togglePause();
                 break;
            case KeyEvent.VK_R:
               Game.newGame();
