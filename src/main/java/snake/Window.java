@@ -83,8 +83,8 @@ public class Window extends JPanel {
             g.setColor(Color.WHITE);
             g.drawRect(col * SIDE, row * SIDE, SIDE, SIDE);
             
-        // Draw the food. 
-        
         }
+        //draw the food
+        
     }
 }
