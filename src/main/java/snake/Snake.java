@@ -62,13 +62,23 @@ public class Snake {
         }
         return moveCoordinate;
     }
+    
+    public boolean contains(Coordinate c) {
+      for (int i = 0; i < size; i++) {
+        if (snake.get(i).equals(c))
+          return true;
+      }
+      return false;
+    }
 
     public void move() {
         Coordinate next = findMoveCoordinate(); // how to test if its part of the snake
         if (snake.contains(next));
         // Game.gameOver(); // need method to test if something is a snake segment or not
-        // else if (next.equals(Grid.getFood())) // not sure where the food variable is at this point
-        //     grow();
+        // else if (next.equals(Grid.getFood())) { // not sure where the food variable is at this point
+        //     for (int i = 0; i < 3; i++) grow();
+        //     Grid.addFood();
+        // }
         // else if (Grid.testWall())
         // Game.gameOver();
         else {
@@ -82,7 +92,6 @@ public class Snake {
     public void grow() {
         Coordinate newSegment = findMoveCoordinate();
         snake.add(0, newSegment);
-        // Grid.addFood();
         size++;
         head = newSegment;
     }
