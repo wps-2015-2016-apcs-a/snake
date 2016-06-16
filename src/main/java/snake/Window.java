@@ -94,7 +94,7 @@ public class Window extends JPanel {
         
         //Draw the food
         int row = Game.getGrid().getFood().getRow(), col = Game.getGrid().getFood().getCol();
-        g.setColor(Color.ORANGE);
+        g.setColor(Color.GREEN);
         g.fillRect(col * SIDE, row * SIDE, SIDE, SIDE);
     }
 }
