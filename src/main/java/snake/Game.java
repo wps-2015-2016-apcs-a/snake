@@ -31,14 +31,12 @@ public class Game {
     protected static SnakeTimer timer;
 
     public static boolean isRunning() { return state == State.RUNNING; }
-    public static void gameOver() { System.out.print("GO"); /* state = State.OVER; */ }
+    public static void gameOver() { System.out.print("GO"); state = State.OVER; }
     public static void newGame() {
         state = State.PAUSED;
         snake = new Snake();
         Dimension gridSize = window.getGridSize();
         grid = new Grid((int) gridSize.getWidth(), (int) gridSize.getHeight());
-        snake = new Snake();
-        timer = new SnakeTimer();
         window.repaint();
     }
     public static void togglePause() {
@@ -95,5 +93,6 @@ public class Game {
 
         // Start new game
         newGame();
+        timer = new SnakeTimer();
     }
 }

@@ -84,6 +84,10 @@ public class Window extends JPanel {
             }
         }
         // Draw the snake.
+        if (Game.getSnake() == null)
+            System.out.println("SNAKE IS NULL");
+        else
+            
         for (Coordinate segment : Game.getSnake().getSnake()) {
             int row = segment.getRow(), col = segment.getCol();
             g.setColor(Color.BLACK);

@@ -13,7 +13,7 @@ public class Grid {
     
     ///////////////////FIELDS/////////////////////
     private Coordinate food;
-    
+    private static int BORDER = 2;
     public int getGridHeight(){
         return Game.getWindow().getHeight() / Game.getWindow().SIDE;
     }
@@ -27,21 +27,19 @@ public class Grid {
     
     public boolean testWall() {
         // RED_FLAG: where did these numbers come from?!
-        if (Game.getSnake().findMoveCoordinate().getRow() == 0 || Game.getSnake().findMoveCoordinate().getRow() == 1 || 
-            Game.getSnake().findMoveCoordinate().getRow() == getGridHeight() - 2 || Game.getSnake().findMoveCoordinate().getRow() == getGridHeight() -  1)
+        if (Game.getSnake().findMoveCoordinate().getRow() < BORDER || Game.getSnake().findMoveCoordinate().getRow() >= getGridHeight() - BORDER)
             return true;
         // RED_FLAG: where did these numbers come from?!
-        if (Game.getSnake().findMoveCoordinate().getCol() == 0 || Game.getSnake().findMoveCoordinate().getCol() == 1 ||
-            Game.getSnake().findMoveCoordinate().getCol() == getGridWidth() - 2 || Game.getSnake().findMoveCoordinate().getCol() == getGridWidth() -1)
+        if (Game.getSnake().findMoveCoordinate().getCol() < BORDER || Game.getSnake().findMoveCoordinate().getCol() >= getGridWidth() - BORDER)
             return true;
         return false;
     }
 
     public void addFood() {
-        int rowFood = 2 +(int)(Math.random() * getGridHeight() - 4);
-        int colFood = 2 +(int)(Math.random() * getGridWidth() - 4);
+        int rowFood = BORDER + (int)(Math.random() * (getGridHeight() - BORDER * 2));
+        int colFood = BORDER + (int)(Math.random() * (getGridWidth() - BORDER * 2));
         Coordinate food = new Coordinate (rowFood, colFood);
-        if (Game.getSnake().contains(food))
+        if (Game.getSnake().contains(food) || testWall())
             addFood();
         else 
             this.food = food;

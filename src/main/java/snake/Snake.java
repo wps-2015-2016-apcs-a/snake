@@ -79,7 +79,7 @@ public class Snake {
      */
     public void move() {
         Coordinate next = findMoveCoordinate(); 
-        if (snake.contains(next) || Game.getGrid().testWall())
+        if (contains(next) || Game.getGrid().testWall())
             Game.gameOver(); 
         else if (Game.getGrid().isFood(next)) {
             for (int i = 0; i < 3; i++) 
