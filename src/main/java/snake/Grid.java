@@ -21,6 +21,10 @@ public class Grid {
         return Game.getWindow().getWidth() / Game.getWindow().SIDE;
     }
     
+    public Coordinate getFood(){
+        return food;
+    }
+    
     public boolean testWall() {
         // RED_FLAG: where did these numbers come from?!
         if (Game.getSnake().findMoveCoordinate().getRow() == 0 || Game.getSnake().findMoveCoordinate().getRow() == 1 || 
