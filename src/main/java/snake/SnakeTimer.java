@@ -7,43 +7,41 @@
  */
 package snake;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.Timer;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class SnakeTimer implements ActionListener {
 
-    //////////////////////////////////////FIELDS/////////////////////////////////////////////
+    //////////////////////////////// FIELDS ////////////////////////////////
+
     /**
-     * Holds the delay in the thing
+     * Holds the delay in the thing.
      */
     public static final int DELAY1 = 80;
 
     /**
-     * Acts as the timer. Completely unnecessary given the name, but I was told to write comments
+     * Holds {@link Window} redraw {@link Timer}.
      */
     private Timer boardRedrawTimer;
 
+    ///////////////////////////// CONSTRUCTORS /////////////////////////////
 
-
-
-    /////////////////////////////////////CONSTRUCTOR////////////////////////////////////////
     public SnakeTimer() {
         boardRedrawTimer = new Timer(DELAY1, this);
         boardRedrawTimer.start();
     }
 
-    ////////////////////////////////////METHODS////////////////////////////////////////////////
+    //////////////////////////////// METHODS ///////////////////////////////
+
     /**
      * Invoked when a ({@link Timer}) action occurs.
      * 
      * @param e the {@link ActionEvent}
      */
     public void actionPerformed(ActionEvent e) {
-        if(Game.isRunning()) {
-            Game.getSnake().move();      // move the snake
-            Game.getWindow().repaint();  // repaint the window
+        if (Game.isRunning()) {
+            Game.getSnake().move();     // move the snake
+            Game.getWindow().repaint(); // repaint the window
         }
     }
-
 }
