@@ -17,26 +17,21 @@ public class SnakeTimer implements ActionListener {
     /**
      * Holds the delay in the thing
      */
-    public static final int DELAY1 = 70;
+    public static final int DELAY1 = 90;
 
     /**
      * Acts as the timer. Completely unnecessary given the name, but I was told to write comments
      */
     private Timer boardRedrawTimer;
 
-    /**
-     * Holds whether or not the game is actively paused
-     * True- it is
-     * False- it isn't
-     */
-    private boolean paused;
+
 
 
     /////////////////////////////////////CONSTRUCTOR////////////////////////////////////////
     public SnakeTimer() {
         boardRedrawTimer = new Timer(DELAY1, this);
         boardRedrawTimer.start();
-        paused = false;
+        Game.isPaused = false;
     }
 
     ////////////////////////////////////METHODS////////////////////////////////////////////////
@@ -46,14 +41,14 @@ public class SnakeTimer implements ActionListener {
      */
     private void theSpaceBarWasPressed()
     {
-        if(paused == false)
+        if(Game.isPaused == false)
         {
-            paused = true;
+            Game.isPaused = true;
             boardRedrawTimer.stop();
         }
         else
         {
-            paused = false;
+            Game.isPaused = false;
             boardRedrawTimer.start();
         }
     }
