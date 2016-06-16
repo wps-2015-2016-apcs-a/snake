@@ -30,7 +30,8 @@ public class Grid {
         int colFood = 2 +(int)(Math.random() * 72);
         Coordinate food = new Coordinate (rowFood, colFood);
         for (int i = 0; i < Game.getSnake().getScore(); i++){
-            if (food
+            if (Game.getSnake().contains(food))
+                addFood();
         }
 
         //if(Game.getSnake().contains(food))
