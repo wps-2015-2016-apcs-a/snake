@@ -48,7 +48,7 @@ public class Grid {
                 
     }
     public boolean isFood(Coordinate coord) {
-        if (coord == food)
+        if (coord.equals(food))
             return true;
         else
             return false;
