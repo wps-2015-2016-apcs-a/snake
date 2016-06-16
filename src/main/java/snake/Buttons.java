@@ -34,5 +34,3 @@ public class Buttons{
     public JTextField getScoreBox(){ return scoreBox;}
     public JTextField getInstructionBox() { return instructionBox;}
 }
-
-
