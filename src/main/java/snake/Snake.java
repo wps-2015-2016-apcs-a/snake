@@ -78,15 +78,15 @@ public class Snake {
      * If not, the game ends. Otherwise, the snake either moves or grows.
      */
     public void move() {
-        Coordinate next = findMoveCoordinate(); // how to test if its part of the snake
-        if (snake.contains(next));
-        // Game.gameOver(); // need method to test if something is a snake segment or not
-        // else if (isFood(next)) { // not sure where the food variable is at this point
-        //     for (int i = 0; i < 3; i++) grow();
-        //     Grid.addFood();
-        // }
-        // else if (Grid.testWall())
-        // Game.gameOver();
+        Coordinate next = findMoveCoordinate(); 
+        if (snake.contains(next))
+            Game.gameOver(); 
+        else if (isFood(next)) {
+            for (int i = 0; i < 3; i++) grow();
+            Grid.addFood();
+        }
+        else if (Grid.testWall())
+        Game.gameOver();
         else {
             snake.remove(tail);
             snake.add(0, next);
@@ -99,8 +99,9 @@ public class Snake {
      */
     public void grow() {
         Coordinate newSegment = findMoveCoordinate();
-        // if (Grid.testWall()) Game.gameOver();
-        // if (isFood(newSegment)) move();
+        if (Grid.testWall()) Game.gameOver();
+        else if (isFood(newSegment)) move();
+        else if (snake.contains(next)) Game.gameOver();
         snake.add(0, newSegment);
         size++;
         head = newSegment;
