@@ -36,19 +36,20 @@ public class Keyboard implements KeyListener {
     /** Handle the key released event from the text field. */
     public void keyReleased(KeyEvent e) {
     }
+
     /** Handle the key typed event from the text field. */
     public void keyTyped(KeyEvent e) {
-      int id = e.getKeyCode();
-   
-      switch(id) {
-           case KeyEvent.VK_SPACE:
+        int id = e.getKeyChar();
+        switch(id) {
+            case KeyEvent.VK_SPACE:
                 Game.togglePause();
                 break;
-           case KeyEvent.VK_R:
-              Game.newGame();
-              break;
+            case KeyEvent.VK_R:
+            case 'r':
+                Game.newGame();
+                break;
             default:
                 break;
+        }
     }
-}
 }
