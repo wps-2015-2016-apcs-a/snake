@@ -18,6 +18,8 @@ public class Snake {
     private List<Coordinate> snake;
     private int size;
     private Direction direction;
+    public int grow;
+    public static final int GROW_COUNT = 3;
 
     public Snake() {
         head = tail = new Coordinate(3, 3);
@@ -83,15 +85,18 @@ public class Snake {
         if (contains(next) || Game.getGrid().testWall())
             Game.gameOver(); 
         else if (Game.getGrid().isFood(next)) {
-            for (int i = 0; i < 3; i++) 
-                grow();
+            grow = GROW_COUNT;
+            grow();
             Game.getGrid().addFood();
         }
         else {
-            snake.remove(tail);
-            snake.add(0, next);
-            head = next;
-            tail = snake.get(size - 1); //resets tail to the new last segment
+            if (grow > 0) grow();
+            else {
+                snake.remove(tail);
+                snake.add(0, next);
+                head = next;
+                tail = snake.get(size - 1); //resets tail to the new last segment
+            }
         }
     }
     /**
@@ -102,5 +107,6 @@ public class Snake {
         snake.add(0, newSegment);
         size++;
         head = newSegment;
+        grow--;
     }
 }
