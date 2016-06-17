@@ -15,7 +15,7 @@ public class Grid {
     private Coordinate food;
     private static int BORDER = 2;
     public int getGridHeight(){
-        return Game.getWindow().getHeight() / Game.getWindow().SIDE;
+        return (Game.getWindow().getHeight() - 20) / Game.getWindow().SIDE;  //This thing may or may not work
     }
     public int getGridWidth(){
         return Game.getWindow().getWidth() / Game.getWindow().SIDE;
