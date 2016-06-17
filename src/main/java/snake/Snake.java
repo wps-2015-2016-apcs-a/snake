@@ -29,6 +29,7 @@ public class Snake {
 
     public int getScore() { return size; }
     public List<Coordinate> getSnake() { return snake; }
+    public Coordinate getHead() { return head; }
 
     private void setDirection(Direction direction) { this.direction = direction; }
     /** The user pressing an arrow key will prompt the corresponding method to change direction. */
