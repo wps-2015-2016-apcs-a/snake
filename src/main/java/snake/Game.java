@@ -32,6 +32,7 @@ public class Game {
 
     public static boolean isRunning() { return state == State.RUNNING; }
     public static void gameOver() { System.out.print("GO"); state = State.OVER; }
+    public static boolean isGameOver() { return state == State.OVER; }
     public static void newGame() {
         state = State.PAUSED;
         snake = new Snake();
