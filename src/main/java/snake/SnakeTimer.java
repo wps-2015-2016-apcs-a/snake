@@ -17,7 +17,7 @@ public class SnakeTimer implements ActionListener {
     /**
      * Holds the delay in the thing.
      */
-    public static final int DELAY1 = 80;
+    public static final int DELAY1 = 70;
 
     /**
      * Holds {@link Window} redraw {@link Timer}.
@@ -29,6 +29,7 @@ public class SnakeTimer implements ActionListener {
     public SnakeTimer() {
         boardRedrawTimer = new Timer(DELAY1, this);
         boardRedrawTimer.start();
+        Game.getWindow().scoreUpdate();
     }
 
     //////////////////////////////// METHODS ///////////////////////////////
@@ -42,6 +43,7 @@ public class SnakeTimer implements ActionListener {
         if (Game.isRunning()) {
             Game.getSnake().move();     // move the snake
             Game.getWindow().repaint(); // repaint the window
+            Game.getWindow().scoreUpdate(); // update score
         }
     }
 }
