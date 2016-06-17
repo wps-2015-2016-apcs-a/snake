@@ -119,6 +119,16 @@ public class Window extends JPanel {
             g.setColor(Color.WHITE);
             g.drawRect(col * SIDE, row * SIDE, SIDE, SIDE); 
         }
+        //Change head to red if dead. 
+        if (Game.isGameOver()){
+            int row = Game.getSnake().getHead().getRow();
+            int col = Game.getSnake().getHead().getCol();
+            g.setColor(Color.RED);
+            g.fillRect(col * SIDE, row * SIDE, SIDE, SIDE);
+            g.setColor(Color.WHITE);
+            g.drawRect(col * SIDE, row * SIDE, SIDE, SIDE);
+        }
+            
         
         //Draw the food
         int row = Game.getGrid().getFood().getRow(), col = Game.getGrid().getFood().getCol();

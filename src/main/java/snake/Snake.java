@@ -14,11 +14,20 @@ public class Snake {
     /** Direction is an enum for the four directions. */
     public static enum Direction { UP, RIGHT, DOWN, LEFT, };
 
+    /** The first and last segment of the snake. */
     private Coordinate head, tail;
+    /** The LinkedList of Snake segments. */
     private List<Coordinate> snake;
+    /** The length of the snake. */
     private int size;
+    /** Holds the direction of the snake. */
     private Direction direction;
-
+    /** Used in the move method to see how many more segments the snake needs to add. */
+    public int grow;
+    /** The amount the snake grows by. */
+    public static final int GROW_COUNT = 3;
+    
+    /** Constructs the snake. */
     public Snake() {
         head = tail = new Coordinate(3, 3);
         snake = new LinkedList<Coordinate>();
@@ -27,14 +36,25 @@ public class Snake {
         direction = Direction.RIGHT;
     }
 
+    /** Returns the size of the snake, used to calculate the score. */
     public int getScore() { return size; }
+    /** Returns the LinkedList of snake segments, aka the snake itself. */
     public List<Coordinate> getSnake() { return snake; }
+    /** Returns the first segment of the snake. */
+    public Coordinate getHead() { return head; }
 
-    private void setDirection(Direction direction) { this.direction = direction; }
-    /** The user pressing an arrow key will prompt the corresponding method to change direction. */
+    /** Sets the direction of the snake based on user input. */
+    private void setDirection(Direction direction) { 
+      if (Game.isRunning()) 
+          this.direction = direction; 
+    }
+    /** Turns the snake up. */
     public void turnUp() { setDirection(Direction.UP); }
+    /** Turns the snake right. */
     public void turnRight() { setDirection(Direction.RIGHT); }
+    /** Turns the snake down. */
     public void turnDown() { setDirection(Direction.DOWN); }
+    /** Turns the snake left. */
     public void turnLeft() { setDirection(Direction.LEFT); }
 
     /**
@@ -82,15 +102,18 @@ public class Snake {
         if (contains(next) || Game.getGrid().testWall())
             Game.gameOver(); 
         else if (Game.getGrid().isFood(next)) {
-            for (int i = 0; i < 3; i++) 
-                grow();
+            grow = GROW_COUNT;
+            grow();
             Game.getGrid().addFood();
         }
         else {
-            snake.remove(tail);
-            snake.add(0, next);
-            head = next;
-            tail = snake.get(size - 1); //resets tail to the new last segment
+            if (grow > 0) grow();
+            else {
+                snake.remove(tail);
+                snake.add(0, next);
+                head = next;
+                tail = snake.get(size - 1); //resets tail to the new last segment
+            }
         }
     }
     /**
@@ -101,5 +124,6 @@ public class Snake {
         snake.add(0, newSegment);
         size++;
         head = newSegment;
+        grow--;
     }
 }
