@@ -16,13 +16,37 @@ import javax.swing.*;
 public class Window extends JPanel {
 
     public static final int PREFERRED_WIDTH = 960;
-    public static final int PREFERRED_HEIGHT = 720;
+    public static final int PREFERRED_HEIGHT = 740;  //This might not work
     public static final int SIDE = 12;
+    private static JLabel scoreBox;
+    private static JLabel instructionBox;
+    private static String scoreKeep;
+    private static int scoreKeeper;
+
+
 
     public Window() {
         setSize(getPreferredSize());
         setBackground(Color.PINK); // why not?!
         setVisible(true);
+        instructionBox = new JLabel();
+        instructionBox.setSize(getWidth(), 10);
+        instructionBox.setLocation(0,730);
+        instructionBox.setText("Press space bar to start and pause, r to restart, arrows to move");
+        scoreBox = new JLabel();
+        scoreBox.setSize(getWidth(),10);
+        scoreBox.setLocation(0,0);
+        this.add(instructionBox);
+        this.add(scoreBox);
+    }
+
+    /**
+     * Updates the score
+     */
+    public void scoreUpdate(){
+        scoreKeeper = Game.getSnake().getScore();
+        scoreKeep = "Score: " + scoreKeeper;
+        scoreBox.setText(scoreKeep);
     }
 
     /**
@@ -69,11 +93,11 @@ public class Window extends JPanel {
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 if (row == 0 || row == 1 || row == rows - 2 || row == rows - 1){
-                    g.setColor(Color.BLUE);
+                    g.setColor(Color.GRAY);
                     g.fillRect(col * SIDE, row * SIDE, SIDE, SIDE);
                 }
                 if (col == 0 || col == 1 || col == cols - 2 || col == cols - 1){
-                    g.setColor(Color.BLUE);
+                    g.setColor(Color.GRAY);
                     g.fillRect(col * SIDE, row * SIDE, SIDE, SIDE);
                 }
                 if (row % 10 == 0 || col % 10 == 0)
@@ -100,5 +124,7 @@ public class Window extends JPanel {
         int row = Game.getGrid().getFood().getRow(), col = Game.getGrid().getFood().getCol();
         g.setColor(Color.GREEN);
         g.fillRect(col * SIDE, row * SIDE, SIDE, SIDE);
+
+
     }
 }
