@@ -38,7 +38,7 @@ public class Snake {
 
     /** Returns the size of the snake, used to calculate the score. */
     public int getScore() { return size; }
-    /** Returns the LinkedList of snake segments, aka the snake itself. */
+    /** Returns {@link List} of snake segments, aka the snake itself. */
     public List<Coordinate> getSnake() { return snake; }
     /** Returns the first segment of the snake. */
     public Coordinate getHead() { return head; }

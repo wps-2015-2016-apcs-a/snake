@@ -7,6 +7,7 @@
 package snake;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 /**
@@ -80,7 +81,7 @@ public class Game {
      */
     public static void main(String[] args) {
         System.out.println("# Snake");
-        JFrame frame = new JFrame("Snake");
+        final JFrame frame = new JFrame("Snake");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container c = frame.getContentPane();
 
@@ -95,5 +96,28 @@ public class Game {
         // Start new game
         newGame();
         timer = new SnakeTimer();
+
+        // Add ComponentAdapter to manage resizing frame.
+        frame.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                assert getSnake() != null : "getSnake() == null";
+                assert getGrid() != null : "getGrid() == null";
+                // Find maximum width & height values.
+                int maxX = getGrid().getFood().getCol();
+                int maxY = getGrid().getFood().getRow();
+                for (Coordinate coordinate : getSnake().getSnake()) {
+                    maxX = Math.max(maxX, coordinate.getCol());
+                    maxY = Math.max(maxY, coordinate.getRow());
+                }
+                int maxWidth = (maxX + 1 + Grid.BORDER * 2) * Window.SIDE;
+                int maxHeight = (maxY + 1 + Grid.BORDER * 2) * Window.SIDE;
+                if (frame.getSize().width < maxWidth || frame.getSize().height < maxHeight) {
+                    frame.setSize(
+                        Math.max(frame.getSize().width, maxWidth),
+                        Math.max(frame.getSize().height, maxHeight));
+                }
+            }
+        });
     }
 }

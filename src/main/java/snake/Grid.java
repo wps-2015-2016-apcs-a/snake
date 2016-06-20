@@ -12,8 +12,8 @@ public class Grid {
     public Grid(int width, int height) { this.width = width; this.height = height; addFood();}
     
     ///////////////////FIELDS/////////////////////
+    public static final int BORDER = 2;
     private Coordinate food;
-    private static int BORDER = 2;
     public int getGridHeight(){
         return Game.getWindow().getHeight() / Game.getWindow().SIDE;
     }

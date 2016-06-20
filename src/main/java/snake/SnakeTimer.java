@@ -7,15 +7,17 @@
  */
 package snake;
 
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.util.List;
 
 public class SnakeTimer implements ActionListener {
 
     //////////////////////////////// FIELDS ////////////////////////////////
 
     /**
-     * Holds the delay in the thing.
+     * {@link Window} redraw delay (in ms).
      */
     public static final int DELAY1 = 80;
 
@@ -32,7 +34,7 @@ public class SnakeTimer implements ActionListener {
     }
 
     //////////////////////////////// METHODS ///////////////////////////////
-
+        
     /**
      * Invoked when a ({@link Timer}) action occurs.
      * 
