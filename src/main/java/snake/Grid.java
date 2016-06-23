@@ -21,6 +21,14 @@ public class Grid {
     
     
     ///////////////////METHODS////////////////////
+    public int getRow(){
+        return Game.getWindow().getHeight() - Game.getWindow().BORDER;
+    }
+    
+    public int getCol(){
+        return Game.getWindow().getWidth() - Game.getWindow().BORDER;
+    }
+    
     public int getGridHeight(){
         return Game.getWindow().getHeight() / Game.getWindow().SIDE;
     }
