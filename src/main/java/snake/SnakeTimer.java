@@ -28,6 +28,9 @@ public class SnakeTimer implements ActionListener {
 
     ///////////////////////////// CONSTRUCTORS /////////////////////////////
 
+    /**
+     * Constructs a new timer for the game.
+     */
     public SnakeTimer() {
         boardRedrawTimer = new Timer(DELAY1, this);
         boardRedrawTimer.start();
