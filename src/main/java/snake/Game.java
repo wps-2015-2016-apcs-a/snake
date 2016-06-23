@@ -42,7 +42,7 @@ public class Game {
         window.repaint();
     }
     public static boolean isRunning() { return state == State.RUNNING; }
-    public static void gameOver() { System.out.print("GO "); state = State.OVER; }
+    public static void gameOver() { state = State.OVER; System.out.print(state + " "); }
     public static boolean isGameOver() { return state == State.OVER; }
     public static void togglePause() {
         if (state != State.OVER)

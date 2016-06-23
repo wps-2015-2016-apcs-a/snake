@@ -114,10 +114,8 @@ public class Window extends JPanel {
      * @param g the Graphics rendering object
      */
     @Override
-    public void paintComponent(Graphics g) 
-    {
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);// paint background
-        // System.out.printf("%s, %s; ", getWidth(), getHeight());
         // Draw the grid.
         final int rows = getHeight() / SIDE, cols = getWidth() / SIDE;
         for (int row = 0; row < rows; row++) {
