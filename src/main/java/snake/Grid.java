@@ -7,13 +7,19 @@
 package snake;
 
 public class Grid {
+       
+///////////////////CONSTRUCTOR////////////////    
+    public Grid(int width, int height) { this.width = width; this.height = height; addFood();}
+
+///////////////////FIELDS/////////////////////
+    
     private int width, height;
     /* RED_FLAG: this is just a STUB to get things to compile. */
-    public Grid(int width, int height) { this.width = width; this.height = height; addFood();}
-    
-    ///////////////////FIELDS/////////////////////
     public static final int BORDER = 2;
     private Coordinate food;
+    
+    
+    ///////////////////METHODS////////////////////
     public int getGridHeight(){
         return (Game.getWindow().getHeight() - 20) / Game.getWindow().SIDE;  //This thing may or may not work
     }

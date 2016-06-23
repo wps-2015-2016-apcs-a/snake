@@ -15,6 +15,8 @@ import javax.swing.*;
  */
 public class Window extends JPanel {
 
+    
+/////////////FIELDS/////////////    
     public static final int PREFERRED_WIDTH = 960;
     public static final int PREFERRED_HEIGHT = 740;  //This might not work
     public static final int SIDE = 12;
@@ -24,7 +26,7 @@ public class Window extends JPanel {
     private static int scoreKeeper;
 
 
-
+//////////////CONSTRUCTOR/////////////////
     public Window() {
         setSize(getPreferredSize());
         setBackground(Color.PINK); // why not?!
@@ -40,6 +42,8 @@ public class Window extends JPanel {
         this.add(scoreBox);
     }
 
+    
+//////////////////METHODS////////////////
     /**
      * Updates the score
      */
