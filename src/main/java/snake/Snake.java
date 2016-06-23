@@ -14,9 +14,9 @@ public class Snake {
     /** Direction is an enum for the four directions. */
     public static enum Direction { UP, RIGHT, DOWN, LEFT, };
 
-    /** The first and last segment of the snake. */
+    /** The first and last segments of the snake, which are {@link Coordinate} objects. */
     private Coordinate head, tail;
-    /** The LinkedList of Snake segments. */
+    /** The LinkedList of Snake segments, made of {@link Coordinate} objects. */
     private List<Coordinate> snake;
     /** The length of the snake. */
     private int size;
@@ -36,14 +36,24 @@ public class Snake {
         direction = Direction.RIGHT;
     }
 
-    /** Returns the size of the snake, used to calculate the score. */
+    /** 
+     * @return The size of the snake, which is also the score.
+     */
     public int getScore() { return size; }
-    /** Returns {@link List} of snake segments, aka the snake itself. */
+    /** 
+     * @return {@link List} of snake segments, aka the snake itself. 
+     */
     public List<Coordinate> getSnake() { return snake; }
-    /** Returns the first segment of the snake. */
+    /** 
+     * @return The {@link Coordinate} object that is the first segment of the snake.
+     */
     public Coordinate getHead() { return head; }
 
-    /** Sets the direction of the snake based on user input. */
+    /** 
+     * Sets the direction of the snake based on user input. 
+     * 
+     * @param The direction that the user's input calls to {@link Keyboard}.
+     */
     private void setDirection(Direction direction) { 
       if (Game.isRunning()) 
           this.direction = direction; 
@@ -60,7 +70,7 @@ public class Snake {
     /**
      * Returns the {@link Coordinate} that the snake should move to next.
      *
-     * @return Coordinate that the snake should move to next
+     * @return {@link Coordinate) object that the snake should move to next.
      */
     public Coordinate findMoveCoordinate() {
         Coordinate moveCoordinate = head;
@@ -84,6 +94,9 @@ public class Snake {
     }
     /**
      * Checks whether a coordinate object is already in the snake.
+     * 
+     * @param Input {@link Coordinate} object.
+     * @return boolean value for whether the Coordinate is in the snake.
      */
     public boolean contains(Coordinate c) {
       for (int i = 0; i < size; i++) {
@@ -94,7 +107,6 @@ public class Snake {
     }
     /**
      * Calls findMoveCoordinate() and tests whether the next movement is valid.
-     * 
      * If not, the game ends. Otherwise, the snake either moves or grows.
      */
     public void move() {
