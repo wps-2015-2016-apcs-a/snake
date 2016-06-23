@@ -2,7 +2,8 @@
  * Grid.java
  *
  * @author 2015-2016 APCS A-Block
- * @author Ryan Delaney <rcdelaney0@gmail.com>
+ * @author Ryan Delaney
+ * @author Jacob Lowen
  */
 package snake;
 
@@ -15,13 +16,13 @@ public class Grid {
     
     private int width, height;
     /* RED_FLAG: this is just a STUB to get things to compile. */
-    public static final int BORDER = 2;
+    //public static final int BORDER = 2;
     private Coordinate food;
     
     
     ///////////////////METHODS////////////////////
     public int getGridHeight(){
-        return (Game.getWindow().getHeight() - 20) / Game.getWindow().SIDE;  //This thing may or may not work
+        return Game.getWindow().getHeight() / Game.getWindow().SIDE;
     }
     public int getGridWidth(){
         return Game.getWindow().getWidth() / Game.getWindow().SIDE;
@@ -33,17 +34,17 @@ public class Grid {
     
     public boolean testWall() {
         // RED_FLAG: where did these numbers come from?!
-        if (Game.getSnake().findMoveCoordinate().getRow() < BORDER || Game.getSnake().findMoveCoordinate().getRow() >= getGridHeight() - BORDER)
+        if (Game.getSnake().findMoveCoordinate().getRow() < 0 || Game.getSnake().findMoveCoordinate().getRow() >= getGridHeight())
             return true;
         // RED_FLAG: where did these numbers come from?!
-        if (Game.getSnake().findMoveCoordinate().getCol() < BORDER || Game.getSnake().findMoveCoordinate().getCol() >= getGridWidth() - BORDER)
+        if (Game.getSnake().findMoveCoordinate().getCol() < 0 || Game.getSnake().findMoveCoordinate().getCol() >= getGridWidth())
             return true;
         return false;
     }
 
     public void addFood() {
-        int rowFood = BORDER + (int)(Math.random() * (getGridHeight() - BORDER * 2));
-        int colFood = BORDER + (int)(Math.random() * (getGridWidth() - BORDER * 2));
+        int rowFood = (int) (Math.random() * (getGridHeight()));
+        int colFood = (int) (Math.random() * (getGridWidth()));
         Coordinate food = new Coordinate (rowFood, colFood);
         if (Game.getSnake().contains(food) || testWall())
             addFood();

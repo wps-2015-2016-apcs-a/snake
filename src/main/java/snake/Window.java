@@ -17,9 +17,10 @@ public class Window extends JPanel {
 
     
 /////////////FIELDS/////////////    
-    public static final int PREFERRED_WIDTH = 960;
-    public static final int PREFERRED_HEIGHT = 740;  //This might not work
-    public static final int SIDE = 12;
+    public static final int PREFERRED_WIDTH = 960;  // 80 grid squares
+    public static final int PREFERRED_HEIGHT = 720; // 60 grid squares
+    public static final int SIDE = 12;  // number of pixels in a grid square
+    public static final int BORDER = 2; // number of grid squares
     private static JLabel scoreBox;
     private static JLabel instructionBox;
     private static String scoreKeep;
@@ -96,19 +97,14 @@ public class Window extends JPanel {
         final int rows = getHeight() / SIDE, cols = getWidth() / SIDE;
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                if (row == 0 || row == 1 || row == rows - 2 || row == rows - 1){
-                    g.setColor(Color.GRAY);
+                if (row < BORDER || row >= rows - BORDER || col < BORDER || col >= cols - BORDER ) {
+                    g.setColor(Color.LIGHT_GRAY);
                     g.fillRect(col * SIDE, row * SIDE, SIDE, SIDE);
                 }
-                if (col == 0 || col == 1 || col == cols - 2 || col == cols - 1){
-                    g.setColor(Color.GRAY);
-                    g.fillRect(col * SIDE, row * SIDE, SIDE, SIDE);
+                else {
+                    g.setColor(Color.BLACK);
+                    g.drawRect(col * SIDE, row * SIDE, SIDE, SIDE);
                 }
-                if (row % 10 == 0 || col % 10 == 0)
-                    g.setColor(Color.BLACK);
-                else
-                    g.setColor(Color.BLACK);
-                g.drawRect(col * SIDE, row * SIDE, SIDE, SIDE);
             }
         }
         // Draw the snake.

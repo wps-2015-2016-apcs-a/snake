@@ -110,8 +110,8 @@ public class Game {
                     maxX = Math.max(maxX, coordinate.getCol());
                     maxY = Math.max(maxY, coordinate.getRow());
                 }
-                int maxWidth = (maxX + 1 + Grid.BORDER * 2) * Window.SIDE;
-                int maxHeight = (maxY + 1 + Grid.BORDER * 2) * Window.SIDE;
+                int maxWidth = (maxX + 1 + Window.BORDER * 2) * Window.SIDE;
+                int maxHeight = (maxY + 1 + Window.BORDER * 2) * Window.SIDE;
                 if (frame.getSize().width < maxWidth || frame.getSize().height < maxHeight) {
                     frame.setSize(
                         Math.max(frame.getSize().width, maxWidth),
