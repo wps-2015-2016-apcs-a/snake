@@ -12,7 +12,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Keyboard implements KeyListener {
-    /** Handle the key pressed event from the text field. */
+    /** Handle the key pressed event from the text field. Calls the direction methods from Snake. */
     public void keyPressed(KeyEvent e) {
         int id = e.getKeyCode();
         switch(id) {
@@ -37,7 +37,7 @@ public class Keyboard implements KeyListener {
     public void keyReleased(KeyEvent e) {
     }
 
-    /** Handle the key typed event from the text field. */
+    /** Handle the key typed event from the text field. Calls togglePause and newGame methods from Game. */
     public void keyTyped(KeyEvent e) {
         int id = e.getKeyChar();
         switch(id) {
