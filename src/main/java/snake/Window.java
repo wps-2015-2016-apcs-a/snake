@@ -15,8 +15,8 @@ import javax.swing.*;
  */
 public class Window extends JPanel {
 
-    
-/////////////FIELDS/////////////    
+    //////////////////////////////// FIELDS ////////////////////////////////
+
     public static final int PREFERRED_WIDTH = 960;  // 80 grid squares
     public static final int PREFERRED_HEIGHT = 720; // 60 grid squares
     public static final int SIDE = 12;  // number of pixels in a grid square
@@ -26,8 +26,8 @@ public class Window extends JPanel {
     private static String scoreKeep;
     private static int scoreKeeper;
 
+    ///////////////////////////// CONSTRUCTORS ////////////////////////////
 
-//////////////CONSTRUCTOR/////////////////
     public Window() {
         setSize(getPreferredSize());
         setBackground(Color.PINK); // why not?!
@@ -45,12 +45,12 @@ public class Window extends JPanel {
         this.add(scoreBox);
     }
 
-    
-//////////////////METHODS////////////////
+    //////////////////////////////// METHODS ///////////////////////////////
+
     /**
-     * Updates the score
+     * Updates the score.
      */
-    public void scoreUpdate(){
+    public void scoreUpdate() {
         scoreKeeper = Game.getSnake().getScore();
         scoreKeep = "Score: " + scoreKeeper;
         scoreBox.setText(scoreKeep);
@@ -63,7 +63,21 @@ public class Window extends JPanel {
      */
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(PREFERRED_WIDTH, PREFERRED_HEIGHT);
+        if (Game.getSnake() == null || Game.getGrid() == null) {
+            return new Dimension(PREFERRED_WIDTH, PREFERRED_HEIGHT);
+        }
+        else {
+            // Find maximum width & height values.
+            int maxX = Game.getGrid().getFood().getCol();
+            int maxY = Game.getGrid().getFood().getRow();
+            for (Coordinate coordinate : Game.getSnake().getSnake()) {
+                maxX = Math.max(maxX, coordinate.getCol());
+                maxY = Math.max(maxY, coordinate.getRow());
+            }
+            int maxWidth = (maxX + 1 + BORDER * 2) * SIDE;
+            int maxHeight = (maxY + 1 + BORDER * 2) * SIDE;
+            return new Dimension(maxWidth, maxHeight);
+        }
     }
 
     /**
@@ -82,9 +96,18 @@ public class Window extends JPanel {
      * @return the Grid size
      */
     public Dimension getGridSize() {
-        return new Dimension(PREFERRED_WIDTH / SIDE, PREFERRED_HEIGHT / SIDE);
+        return new Dimension(getSize().width / SIDE - 2 * BORDER, getSize().height / SIDE - 2 * BORDER);
     }
 
+    private void drawSegment(Graphics g, Coordinate segment, Color color) {
+        assert segment != null : "segment == null";
+        int row = segment.getRow(), col = segment.getCol();
+        g.setColor(color);
+        g.fillRect((col + BORDER) * SIDE, (row + BORDER) * SIDE, SIDE, SIDE);
+        g.setColor(Color.WHITE);
+        g.drawRect((col + BORDER) * SIDE, (row + BORDER) * SIDE, SIDE, SIDE);
+    }
+        
     /**
      * Paint the component using a {@link Graphics} rendering object.
      *
@@ -109,34 +132,20 @@ public class Window extends JPanel {
                 }
             }
         }
-        // Draw the snake.
-        if (Game.getSnake() == null)
-            System.out.println("SNAKE IS NULL");
-        else
-            
+        assert Game.getSnake() != null : "snake == null";
+        // Draw snake.
         for (Coordinate segment : Game.getSnake().getSnake()) {
             int row = segment.getRow(), col = segment.getCol();
             g.setColor(Color.BLACK);
-            g.fillRect(col * SIDE, row * SIDE, SIDE, SIDE);
+            g.fillRect((col + BORDER) * SIDE, (row + BORDER) * SIDE, SIDE, SIDE);
             g.setColor(Color.WHITE);
-            g.drawRect(col * SIDE, row * SIDE, SIDE, SIDE); 
+            g.drawRect((col + BORDER) * SIDE, (row + BORDER) * SIDE, SIDE, SIDE); 
         }
-        //Change head to red if dead. 
-        if (Game.isGameOver()){
-            int row = Game.getSnake().getHead().getRow();
-            int col = Game.getSnake().getHead().getCol();
-            g.setColor(Color.RED);
-            g.fillRect(col * SIDE, row * SIDE, SIDE, SIDE);
-            g.setColor(Color.WHITE);
-            g.drawRect(col * SIDE, row * SIDE, SIDE, SIDE);
+        // Change head to red if dead. 
+        if (Game.isGameOver()) {
+            drawSegment(g, Game.getSnake().getHead(), Color.RED);
         }
-            
-        
-        //Draw the food
-        int row = Game.getGrid().getFood().getRow(), col = Game.getGrid().getFood().getCol();
-        g.setColor(Color.GREEN);
-        g.fillRect(col * SIDE, row * SIDE, SIDE, SIDE);
-
-
+        // Draw food.
+        drawSegment(g, Game.getGrid().getFood(), Color.GREEN);
     }
 }

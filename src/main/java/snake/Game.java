@@ -20,6 +20,8 @@ public class Game {
      */
     private enum State { PAUSED, RUNNING, OVER, };
 
+    //////////////////////////////// FIELDS ////////////////////////////////
+
     /** Snake game State. */
     private static State state;
     /** Snake game {@link Window}. */
@@ -31,23 +33,24 @@ public class Game {
     /** Snake game {@link SnakeTimer}. */
     protected static SnakeTimer timer;
 
-    public static boolean isRunning() { return state == State.RUNNING; }
-    public static void gameOver() { System.out.print("GO"); state = State.OVER; }
-    public static boolean isGameOver() { return state == State.OVER; }
+    //////////////////////////////// METHODS ///////////////////////////////
+
     public static void newGame() {
         state = State.PAUSED;
         snake = new Snake();
-        Dimension gridSize = window.getGridSize();
-        grid = new Grid((int) gridSize.getWidth(), (int) gridSize.getHeight());
+        grid = new Grid();
         window.repaint();
     }
+    public static boolean isRunning() { return state == State.RUNNING; }
+    public static void gameOver() { System.out.print("GO "); state = State.OVER; }
+    public static boolean isGameOver() { return state == State.OVER; }
     public static void togglePause() {
         if (state != State.OVER)
             if (state == State.PAUSED)
                 state = State.RUNNING;
             else
                 state = State.PAUSED;
-        System.out.print(state);
+        System.out.print(state + " ");
     }
     /**
      * Returns {@link Window} object for this Snake game.
@@ -97,25 +100,21 @@ public class Game {
         newGame();
         timer = new SnakeTimer();
 
-        // Add ComponentAdapter to manage resizing frame.
+        // Add ComponentAdapter to manage resizing window.
         frame.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                assert getSnake() != null : "getSnake() == null";
-                assert getGrid() != null : "getGrid() == null";
-                // Find maximum width & height values.
-                int maxX = getGrid().getFood().getCol();
-                int maxY = getGrid().getFood().getRow();
-                for (Coordinate coordinate : getSnake().getSnake()) {
-                    maxX = Math.max(maxX, coordinate.getCol());
-                    maxY = Math.max(maxY, coordinate.getRow());
-                }
-                int maxWidth = (maxX + 1 + Window.BORDER * 2) * Window.SIDE;
-                int maxHeight = (maxY + 1 + Window.BORDER * 2) * Window.SIDE;
-                if (frame.getSize().width < maxWidth || frame.getSize().height < maxHeight) {
+                Dimension frameSize = frame.getSize();
+                Dimension windowSize = window.getSize();
+                // Find difference between frame and window.
+                int diffWidth = frameSize.width - windowSize.width;    //
+                int diffHeight = frameSize.height - windowSize.height; //
+                Dimension preferredSize = window.getPreferredSize();
+                if (windowSize.width < preferredSize.width
+                    || windowSize.height < preferredSize.height) {
                     frame.setSize(
-                        Math.max(frame.getSize().width, maxWidth),
-                        Math.max(frame.getSize().height, maxHeight));
+                        Math.max(frameSize.width, preferredSize.width + diffWidth),
+                        Math.max(frameSize.height, preferredSize.height + diffHeight));
                 }
             }
         });

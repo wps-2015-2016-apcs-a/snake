@@ -11,10 +11,14 @@ package snake;
  */
 public class Coordinate {
 
+    //////////////////////////////// FIELDS ////////////////////////////////
+
     /** Holds row. */
     private int row;
     /** Holds column. */
     private int col;
+
+    ///////////////////////////// CONSTRUCTORS /////////////////////////////
 
     /**
      * Constructs a {@link Coordinate}.
@@ -26,6 +30,8 @@ public class Coordinate {
         this.row = row;
         this.col = col;
     }
+
+    //////////////////////////////// METHODS ///////////////////////////////
 
     /**
      * Returns row of this {@link Coordinate}.

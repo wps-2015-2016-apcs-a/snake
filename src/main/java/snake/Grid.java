@@ -7,50 +7,34 @@
  */
 package snake;
 
-public class Grid {
-       
-///////////////////CONSTRUCTOR////////////////    
-    public Grid(int width, int height) { this.width = width; this.height = height; addFood();}
+import java.awt.*;
 
-///////////////////FIELDS/////////////////////
-    
-    private int width, height;
-    /* RED_FLAG: this is just a STUB to get things to compile. */
-    //public static final int BORDER = 2;
+public class Grid {
+
+    //////////////////////////////// FIELDS ////////////////////////////////
+
     private Coordinate food;
     
-    
-    ///////////////////METHODS////////////////////
-    public int getRow(){
-        return Game.getWindow().getHeight() - Game.getWindow().BORDER;
+    ///////////////////////////// CONSTRUCTORS /////////////////////////////
+
+    public Grid() {
+        addFood();
     }
-    
-    public int getCol(){
-        return Game.getWindow().getWidth() - Game.getWindow().BORDER;
+
+    //////////////////////////////// METHODS ///////////////////////////////
+
+    public int getGridWidth() {
+        return Game.getWindow().getGridSize().width;
     }
-    
-    public int getGridHeight(){
-        return Game.getWindow().getHeight() / Game.getWindow().SIDE;
+    public int getGridHeight() {
+        return Game.getWindow().getGridSize().height;
     }
-    public int getGridWidth(){
-        return Game.getWindow().getWidth() / Game.getWindow().SIDE;
-    }
-    
-    public Coordinate getFood(){
+    public Coordinate getFood() {
         return food;
-    }
-    
-    public boolean testWall() {
-        // RED_FLAG: where did these numbers come from?!
-        if (Game.getSnake().findMoveCoordinate().getRow() < 0 || Game.getSnake().findMoveCoordinate().getRow() >= getGridHeight())
-            return true;
-        // RED_FLAG: where did these numbers come from?!
-        if (Game.getSnake().findMoveCoordinate().getCol() < 0 || Game.getSnake().findMoveCoordinate().getCol() >= getGridWidth())
-            return true;
-        return false;
     }
 
     public void addFood() {
+        assert Game.getSnake() != null : "snake == null";
         int rowFood = (int) (Math.random() * (getGridHeight()));
         int colFood = (int) (Math.random() * (getGridWidth()));
         Coordinate food = new Coordinate (rowFood, colFood);
@@ -61,9 +45,12 @@ public class Grid {
                 
     }
     public boolean isFood(Coordinate coord) {
-        if (coord.equals(food))
-            return true;
-        else
-            return false;
+        return coord.equals(food);
+    }
+
+    public boolean testWall() {
+        Coordinate nextMove = Game.getSnake().findMoveCoordinate();
+        return nextMove.getRow() < 0 || nextMove.getRow() >= getGridHeight()
+            || nextMove.getCol() < 0 || nextMove.getCol() >= getGridWidth();
     }
 }

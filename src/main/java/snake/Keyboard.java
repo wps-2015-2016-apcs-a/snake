@@ -12,6 +12,9 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Keyboard implements KeyListener {
+
+    //////////////////////////////// METHODS ///////////////////////////////
+
     /** Handle the key pressed event from the text field. Calls the direction methods from Snake. */
     public void keyPressed(KeyEvent e) {
         int id = e.getKeyCode();

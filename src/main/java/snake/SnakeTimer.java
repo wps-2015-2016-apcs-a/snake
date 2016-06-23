@@ -46,9 +46,9 @@ public class SnakeTimer implements ActionListener {
      */
     public void actionPerformed(ActionEvent e) {
         if (Game.isRunning()) {
-            Game.getSnake().move();     // move the snake
-            Game.getWindow().repaint(); // repaint the window
-            Game.getWindow().scoreUpdate(); // update score
+            Game.getSnake().move();          // move the snake
+            Game.getWindow().repaint();      // repaint the window
+            Game.getWindow().scoreUpdate();  // update score
         }
     }
 }
