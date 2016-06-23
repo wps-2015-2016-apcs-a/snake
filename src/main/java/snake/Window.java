@@ -35,7 +35,7 @@ public class Window extends JPanel {
         instructionBox = new JLabel();
         instructionBox.setSize(getWidth(), 10);
         instructionBox.setLocation(0,730);
-        instructionBox.setText("Press space bar to start and pause, r to restart, arrows to move");
+        instructionBox.setText("Press 'space bar' to start and pause, 'r' to restart, arrows to move");
         scoreBox = new JLabel();
         scoreBox.setSize(getWidth(),10);
         scoreBox.setLocation(0,0);
