@@ -14,6 +14,8 @@ public class Snake {
     /** Direction is an enum for the four directions. */
     public static enum Direction { UP, RIGHT, DOWN, LEFT, };
 
+    //////////////////////////////// FIELDS ////////////////////////////////
+
     /** The first and last segments of the snake, which are {@link Coordinate} objects. */
     private Coordinate head, tail;
     /** The LinkedList of Snake segments, made of {@link Coordinate} objects. */
@@ -27,7 +29,9 @@ public class Snake {
     /** The amount the snake grows by. */
     public static final int GROW_COUNT = 3;
     
-    /** Constructs the snake. */
+    ///////////////////////////// CONSTRUCTORS /////////////////////////////
+
+    /** Constructs the {@link Snake}. */
     public Snake() {
         head = tail = new Coordinate(3, 3);
         snake = new LinkedList<Coordinate>();
@@ -36,23 +40,31 @@ public class Snake {
         direction = Direction.RIGHT;
     }
 
-    /** 
-     * @return The size of the snake, which is also the score.
+    //////////////////////////////// METHODS ///////////////////////////////
+
+    /**
+     * Returns size of the snake, which is also the score.
+     *
+     * @return size of the snake, which is also the score
      */
     public int getScore() { return size; }
-    /** 
-     * @return {@link List} of snake segments, aka the snake itself. 
+    /**
+     * Returns {@link List} of snake segments, aka the snake itself.
+     * 
+     * @return List of snake segments, aka the snake itself
      */
     public List<Coordinate> getSnake() { return snake; }
-    /** 
-     * @return The {@link Coordinate} object that is the first segment of the snake.
+    /**
+     * Returns {@link Coordinate} that is the first segment of the snake.
+     *
+     * @return Coordinate object that is the first segment of the snake
      */
     public Coordinate getHead() { return head; }
-
     /** 
-     * Sets the direction of the snake based on user input. 
+     * Sets the direction of the snake based on user input.
+     * RED_FLAG: check whether direction turns back on itself here
      * 
-     * @param The direction that the user's input calls to {@link Keyboard}.
+     * @param direction The direction that the user's input calls to {@link Keyboard}.
      */
     private void setDirection(Direction direction) { 
       if (Game.isRunning()) 
@@ -70,7 +82,7 @@ public class Snake {
     /**
      * Returns the {@link Coordinate} that the snake should move to next.
      *
-     * @return {@link Coordinate) object that the snake should move to next.
+     * @return Coordinate that the snake should move to next
      */
     public Coordinate findMoveCoordinate() {
         Coordinate moveCoordinate = head;
@@ -93,9 +105,10 @@ public class Snake {
         return moveCoordinate;
     }
     /**
-     * Checks whether a coordinate object is already in the snake.
+     * Returns <code>true</code> if {@link Coordinate} <code>c</code> is 
+     * already in the snake.
      * 
-     * @param Input {@link Coordinate} object.
+     * @param c Coordinate to check against current snake segments
      * @return boolean value for whether the Coordinate is in the snake.
      */
     public boolean contains(Coordinate c) {
@@ -106,8 +119,8 @@ public class Snake {
       return false;
     }
     /**
-     * Calls findMoveCoordinate() and tests whether the next movement is valid.
-     * If not, the game ends. Otherwise, the snake either moves or grows.
+     * Moves {@link Snake} to next {@link Coordinate}. If not possible, 
+     * game ends, otherwise, the snake either moves or grows.
      */
     public void move() {
         Coordinate next = findMoveCoordinate(); 
@@ -129,7 +142,7 @@ public class Snake {
         }
     }
     /**
-     * Adds a segment to the snake.
+     * Adds a segment to the {@link Snake}.
      */
     public void grow() {
         Coordinate newSegment = findMoveCoordinate();
