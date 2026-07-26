@@ -1,10 +1,13 @@
 {
   "extraKnownMarketplaces": {
-    "banana-claude": {
+    "banana-claude-marketplace": {
       "source": {
         "source": "github",
         "repo": "AgriciDaniel/banana-claude"
       }
     }
+  },
+  "enabledPlugins": {
+    "banana-claude@banana-claude-marketplace": true
   }
 }
